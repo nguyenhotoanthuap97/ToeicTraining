@@ -1,3 +1,143 @@
-<data>
-	<website name="Luyện thi Toeic online"
-</data>
+<Data>
+	<Website name="Luyện thi Toeic online" />
+	<Listening description="In the Listening test, you will be asked to demonstrate how well you understand spoken
+English. The entire Listening test will last approximately 45 minutes. There are four parts, and
+directions are given for each part. You must mark your answers on the separate answer sheet.
+Do not write your answers in your test book.">
+	<Part id=1>
+		Directions: For each question in this part, you will hear four statements about a picture in your
+test book. When you hear the statements, you must select the one statement that best
+describes what you see in the picture. Then find the number of the question on your answer
+sheet and mark your answer. The statements will not be printed in your test book and will be
+spoken only one time.
+	</Part>
+	<Part id=2>
+		Directions: You will hear a question or statement and three responses spoken in English.
+They will not be printed in your test book and will be spoken only one time. Select the best
+response to the question or statement and mark the letter (A), (B), or (C) on your answer
+sheet.
+	</Part>
+	<Part id=3>
+		Directions: You will hear some conversations between two people. You will be asked to
+answer three questions about what the speakers say in each conversation. Select the best
+response to each question and mark the letter (A), (B), (C), or (D) on your answer sheet. The
+conversations will not be printed in your test book and will be spoken only one time.
+	</Part>
+	<Part id=4>
+		Directions: You will hear some talks given by a single speaker. You will be asked to answer
+three questions about what the speaker says in each talk. Select the best response to each
+question and mark the letter (A), (B), (C), or (D) on your answer sheet. The talks will not be
+printed in your test book and will be spoken only one time.
+	</Part>
+	</Listening>
+	<Reading description="In the Reading test, you will read a variety of texts and answer several different types of
+reading comprehension questions. The entire Reading test will last 75 minutes. There are
+three parts, and directions are given for each part. You are encouraged to answer as many
+questions as possible within the time allowed.">
+	<Part id=5>
+		Directions: A word or phrase is missing in each of the sentences below. Four answer
+choices are given below each sentence. Select the best answer to complete the sentence.
+Then mark the letter (A), (B), (C), or (D) on your answer sheet.
+		</Part>
+		<Part id=6>
+			Directions: Read the texts that follow. A word or phrase is missing in some of the
+sentences. Four answer choices are given below each of the sentences. Select the best
+answer to complete the text. Then mark the letter (A), (B), (C), or (D) on your answer sheet.
+		</Part>
+		<Part id=7>
+			Directions: In this part you will read a selection of texts, such as magazine and newspaper
+articles, letters, and advertisements. Each text is followed by several questions. Select the
+best answer for each question and mark the letter (A), (B), (C), or (D) on your answer
+sheet.
+		</Part>
+	</Reading>
+	<Question_list>
+		<Question type="listening" part="1" id="1" image="" audio="" content="">
+			<Test_book id="1" />
+			<Choices>
+				<A values="" status="true" />
+				<B values="" status="true" />
+				<C values="" status="true" />
+				<D values="" status="false" />
+			</Choices>
+		</Question>
+		<Question type="reading" part="5" id="1" image="" audio="" content="Register early if you would like to attend next Tuesday’s ------- on project management.">
+			<Test_book id="1" />
+			<Choices>
+				<A values="seminar" status="true" />
+				<B values="reason" status="true" />
+				<C values="policy" status="true" />
+				<D values="scene" status="true" />
+			</Choices>
+		</Question>
+		<Question type="reading" part="5" id="2" image="" audio="" content="Paul Brown resigned last Monday from his position as ------- executive of the company.">
+			<Test_book id="1" />
+			<Choices>
+				<A values="fine" status="true" />
+				<B values="chief" status="true" />
+				<C values="front" status="true" />
+				<D values="large" status="true" />
+			</Choices>
+		</Question>
+		<Question type="reading" part="5" id="3" image="" audio="" content="The financial audit of Soft Peach Software ------- completed on Wednesday by a certified accounting firm.">
+			<Test_book id="1" />
+			<Choices>
+				<A values="to be" status="true" />
+				<B values="having been" status="true" />
+				<C values="was" status="true" />
+				<D values="were" status="true" />
+			</Choices>
+		</Question>
+		<Question type="reading" part="5" id="4" image="" audio="" content="The organizers of the trip reminded participants to ------- at the steps of the city hall at 2:00 P.M.">
+			<Test_book id="1" />
+			<Choices>
+				<A values="see" status="true" />
+				<B values="combine" status="true" />
+				<C values="meet" status="true" />
+				<D values="go" status="true" />
+			</Choices>
+		</Question>
+		<Question type="reading" part="5" id="4" image="" audio="" content="The organizers of the trip reminded participants to ------- at the steps of the city hall at 2:00 P.M.">
+			<Test_book id="1" />
+			<Choices>
+				<A values="see" status="true" />
+				<B values="combine" status="true" />
+				<C values="meet" status="true" />
+				<D values="go" status="true" />
+			</Choices>
+		</Question>
+		<Question type="reading" part="5" id="5" image="" audio="" content="------- is no better season than winter to begin training at Silver’s Fitness Center.">
+			<Test_book id="1" />
+			<Choices>
+				<A values="When" status="true" />
+				<B values="It" status="true" />
+				<C values="There" status="true" />
+				<D values="As it" status="true" />
+			</Choices>
+		</Question>
+		<Question type="reading" part="5" id="5" image="" audio="" content="------- is no better season than winter to begin training at Silver’s Fitness Center.">
+			<Test_book id="1" />
+			<Choices>
+				<A values="When" status="true" />
+				<B values="It" status="true" />
+				<C values="There" status="true" />
+				<D values="As it" status="true" />
+			</Choices>
+		</Question>
+		<Question type="reading" part="5" id="6" image="" audio="" content="The recent worldwide increase in oil prices has led to a ------- demand for electric vehicles.">
+			<Test_book id="1" />
+			<Choices>
+				<A values="greater" status="true" />
+				<B values="greatest" status="true" />
+				<C values="greatly" status="true" />
+				<D values="greatness" status="true" />
+			</Choices>
+		</Question>
+	</Question_list>
+	<Answer_sheet>
+		<Text_book id="1">
+			<Answer part="5" id="1">A
+			</Answer>
+		</Text_book>
+	</Answer_sheet>
+</Data>
