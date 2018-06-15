@@ -1,143 +1,260 @@
 <Data>
 	<Website name="Luyện thi Toeic online" />
-	<Listening description="In the Listening test, you will be asked to demonstrate how well you understand spoken
-English. The entire Listening test will last approximately 45 minutes. There are four parts, and
-directions are given for each part. You must mark your answers on the separate answer sheet.
-Do not write your answers in your test book.">
+	<Listening description="In the Listening test, you will be asked to demonstrate how well you understand spoken English. The entire Listening test will last approximately 45 minutes. There are four parts, and directions are given for each part. You must mark your answers on the separate answer sheet. Do not write your answers in your test book.">
 	<Part id=1>
-		Directions: For each question in this part, you will hear four statements about a picture in your
-test book. When you hear the statements, you must select the one statement that best
-describes what you see in the picture. Then find the number of the question on your answer
-sheet and mark your answer. The statements will not be printed in your test book and will be
-spoken only one time.
+		Directions: For each question in this part, you will hear four statements about a picture in your test book. When you hear the statements, you must select the one statement that best describes what you see in the picture. Then find the number of the question on your answer sheet and mark your answer. The statements will not be printed in your test book and will be spoken only one time.
 	</Part>
 	<Part id=2>
-		Directions: You will hear a question or statement and three responses spoken in English.
-They will not be printed in your test book and will be spoken only one time. Select the best
-response to the question or statement and mark the letter (A), (B), or (C) on your answer
-sheet.
+		Directions: You will hear a question or statement and three responses spoken in English. They will not be printed in your test book and will be spoken only one time. Select the best response to the question or statement and mark the letter (A), (B), or (C) on your answer sheet.
 	</Part>
 	<Part id=3>
-		Directions: You will hear some conversations between two people. You will be asked to
-answer three questions about what the speakers say in each conversation. Select the best
-response to each question and mark the letter (A), (B), (C), or (D) on your answer sheet. The
-conversations will not be printed in your test book and will be spoken only one time.
+		Directions: You will hear some conversations between two people. You will be asked to answer three questions about what the speakers say in each conversation. Select the best response to each question and mark the letter (A), (B), (C), or (D) on your answer sheet. The conversations will not be printed in your test book and will be spoken only one time.
 	</Part>
 	<Part id=4>
-		Directions: You will hear some talks given by a single speaker. You will be asked to answer
-three questions about what the speaker says in each talk. Select the best response to each
-question and mark the letter (A), (B), (C), or (D) on your answer sheet. The talks will not be
-printed in your test book and will be spoken only one time.
+		Directions: You will hear some talks given by a single speaker. You will be asked to answer three questions about what the speaker says in each talk. Select the best response to each question and mark the letter (A), (B), (C), or (D) on your answer sheet. The talks will not be printed in your test book and will be spoken only one time.
 	</Part>
 	</Listening>
-	<Reading description="In the Reading test, you will read a variety of texts and answer several different types of
-reading comprehension questions. The entire Reading test will last 75 minutes. There are
-three parts, and directions are given for each part. You are encouraged to answer as many
-questions as possible within the time allowed.">
-	<Part id=5>
-		Directions: A word or phrase is missing in each of the sentences below. Four answer
-choices are given below each sentence. Select the best answer to complete the sentence.
-Then mark the letter (A), (B), (C), or (D) on your answer sheet.
+	<Reading description="In the Reading test, you will read a variety of texts and answer several different types of reading comprehension questions. The entire Reading test will last 75 minutes. There are three parts, and directions are given for each part. You are encouraged to answer as many questions as possible within the time allowed.">
+		<Part id=5>
+			Directions: A word or phrase is missing in each of the sentences below. Four answer choices are given below each sentence. Select the best answer to complete the sentence. Then mark the letter (A), (B), (C), or (D) on your answer sheet.
 		</Part>
 		<Part id=6>
-			Directions: Read the texts that follow. A word or phrase is missing in some of the
-sentences. Four answer choices are given below each of the sentences. Select the best
-answer to complete the text. Then mark the letter (A), (B), (C), or (D) on your answer sheet.
+			Directions: Read the texts that follow. A word or phrase is missing in some of the sentences. Four answer choices are given below each of the sentences. Select the best answer to complete the text. Then mark the letter (A), (B), (C), or (D) on your answer sheet.
 		</Part>
 		<Part id=7>
-			Directions: In this part you will read a selection of texts, such as magazine and newspaper
-articles, letters, and advertisements. Each text is followed by several questions. Select the
-best answer for each question and mark the letter (A), (B), (C), or (D) on your answer
-sheet.
+			Directions: In this part you will read a selection of texts, such as magazine and newspaper articles, letters, and advertisements. Each text is followed by several questions. Select the best answer for each question and mark the letter (A), (B), (C), or (D) on your answer sheet.
 		</Part>
 	</Reading>
-	<Question_list>
-		<Question type="listening" part="1" id="1" image="" audio="" content="">
-			<Test_book id="1" />
-			<Choices>
-				<A values="" status="true" />
-				<B values="" status="true" />
-				<C values="" status="true" />
-				<D values="" status="false" />
-			</Choices>
-		</Question>
-		<Question type="reading" part="5" id="1" image="" audio="" content="Register early if you would like to attend next Tuesday’s ------- on project management.">
-			<Test_book id="1" />
-			<Choices>
-				<A values="seminar" status="true" />
-				<B values="reason" status="true" />
-				<C values="policy" status="true" />
-				<D values="scene" status="true" />
-			</Choices>
-		</Question>
-		<Question type="reading" part="5" id="2" image="" audio="" content="Paul Brown resigned last Monday from his position as ------- executive of the company.">
-			<Test_book id="1" />
-			<Choices>
-				<A values="fine" status="true" />
-				<B values="chief" status="true" />
-				<C values="front" status="true" />
-				<D values="large" status="true" />
-			</Choices>
-		</Question>
-		<Question type="reading" part="5" id="3" image="" audio="" content="The financial audit of Soft Peach Software ------- completed on Wednesday by a certified accounting firm.">
-			<Test_book id="1" />
-			<Choices>
-				<A values="to be" status="true" />
-				<B values="having been" status="true" />
-				<C values="was" status="true" />
-				<D values="were" status="true" />
-			</Choices>
-		</Question>
-		<Question type="reading" part="5" id="4" image="" audio="" content="The organizers of the trip reminded participants to ------- at the steps of the city hall at 2:00 P.M.">
-			<Test_book id="1" />
-			<Choices>
-				<A values="see" status="true" />
-				<B values="combine" status="true" />
-				<C values="meet" status="true" />
-				<D values="go" status="true" />
-			</Choices>
-		</Question>
-		<Question type="reading" part="5" id="4" image="" audio="" content="The organizers of the trip reminded participants to ------- at the steps of the city hall at 2:00 P.M.">
-			<Test_book id="1" />
-			<Choices>
-				<A values="see" status="true" />
-				<B values="combine" status="true" />
-				<C values="meet" status="true" />
-				<D values="go" status="true" />
-			</Choices>
-		</Question>
-		<Question type="reading" part="5" id="5" image="" audio="" content="------- is no better season than winter to begin training at Silver’s Fitness Center.">
-			<Test_book id="1" />
-			<Choices>
-				<A values="When" status="true" />
-				<B values="It" status="true" />
-				<C values="There" status="true" />
-				<D values="As it" status="true" />
-			</Choices>
-		</Question>
-		<Question type="reading" part="5" id="5" image="" audio="" content="------- is no better season than winter to begin training at Silver’s Fitness Center.">
-			<Test_book id="1" />
-			<Choices>
-				<A values="When" status="true" />
-				<B values="It" status="true" />
-				<C values="There" status="true" />
-				<D values="As it" status="true" />
-			</Choices>
-		</Question>
-		<Question type="reading" part="5" id="6" image="" audio="" content="The recent worldwide increase in oil prices has led to a ------- demand for electric vehicles.">
-			<Test_book id="1" />
-			<Choices>
-				<A values="greater" status="true" />
-				<B values="greatest" status="true" />
-				<C values="greatly" status="true" />
-				<D values="greatness" status="true" />
-			</Choices>
-		</Question>
-	</Question_list>
-	<Answer_sheet>
-		<Text_book id="1">
-			<Answer part="5" id="1">A
-			</Answer>
-		</Text_book>
-	</Answer_sheet>
+	<Text_book id=1>
+		<Question_list>
+			<Part id=1>
+				<Question type="listening" part="1" id="1" image="" audio="" content="">
+					<Choices>
+						<A values="" status="true" />
+						<B values="" status="true" />
+						<C values="" status="true" />
+						<D values="" status="false" />
+					</Choices>
+				</Question>
+			</Part>
+			<Part id=5>
+				<Question type="reading" part="5" id="101" image="" audio="" content="Register early if you would like to attend next Tuesday’s ------- on project management.">
+					<Choices>
+						<A values="seminar" status="true" />
+						<B values="reason" status="true" />
+						<C values="policy" status="true" />
+						<D values="scene" status="true" />
+					</Choices>
+				</Question>
+				<Question type="reading" part="5" id="102" image="" audio="" content="Paul Brown resigned last Monday from his position as ------- executive of the company.">
+					<Choices>
+						<A values="fine" status="true" />
+						<B values="chief" status="true" />
+						<C values="front" status="true" />
+						<D values="large" status="true" />
+					</Choices>
+				</Question>
+				<Question type="reading" part="5" id="103" image="" audio="" content="The financial audit of Soft Peach Software ------- completed on Wednesday by a certified accounting firm.">
+					<Choices>
+						<A values="to be" status="true" />
+						<B values="having been" status="true" />
+						<C values="was" status="true" />
+						<D values="were" status="true" />
+					</Choices>
+				</Question>
+				<Question type="reading" part="5" id="104" image="" audio="" content="The organizers of the trip reminded participants to ------- at the steps of the city hall at 2:00 P.M.">
+					<Choices>
+						<A values="see" status="true" />
+						<B values="combine" status="true" />
+						<C values="meet" status="true" />
+						<D values="go" status="true" />
+					</Choices>
+				</Question>
+				<Question type="reading" part="5" id="105" image="" audio="" content="------- is no better season than winter to begin training at Silver’s Fitness Center.">
+					<Choices>
+						<A values="When" status="true" />
+						<B values="It" status="true" />
+						<C values="There" status="true" />
+						<D values="As it" status="true" />
+					</Choices>
+				</Question>
+				<Question type="reading" part="5" id="106" image="" audio="" content="The recent worldwide increase in oil prices has led to a ------- demand for electric vehicles.">
+					<Choices>
+						<A values="greater" status="true" />
+						<B values="greatest" status="true" />
+						<C values="greatly" status="true" />
+						<D values="greatness" status="true" />
+					</Choices>
+				</Question>
+				<Question type="reading" part="5" id="107" image="" audio="" content="Maria Vásquez has a wide range of experience, ------- worked in technical, production, and marketing positions.">
+					<Choices>
+						<A values="having" status="true" />
+						<B values="has" status="true" />
+						<C values="having had" status="true" />
+						<D values="had" status="true" />
+					</Choices>
+				</Question>
+				<Question type="reading" part="5" id="108" image="" audio="" content="Tickets will not be redeemable for cash or credit at any time, ------- will they be replaced if lost or stolen.">
+					<Choices>
+						<A values="but" status="true" />
+						<B values="though" status="true" />
+						<C values="only" status="true" />
+						<D values="nor" status="true" />
+					</Choices>
+				</Question>
+			</Part>
+			<Part id=6>
+				<Question type="reading" part="6" paragraph="1" image="./image/reading_1_6_1.png" audio="" content="">
+					<Choices id="141">
+						<A values="pleased" status="true" />
+						<B values="pleasing" status="true" />
+						<C values="pleasant" status="true" />
+						<D values="pleasure" status="true" />
+					</Choices>
+					<Choices id="142">
+						<A values="will pay" status="true" />
+						<B values="were paid" status="true" />
+						<C values="have paid" status="true" />
+						<D values="will be paid" status="true" />
+					</Choices>
+					<Choices id="143">
+						<A values="tolerable" status="true" />
+						<B values="liberal" status="true" />
+						<C values="eligible" status="true" />
+						<D values="expressed" status="true" />
+					</Choices>
+				</Question>
+			</Part>
+			<Part id="7">
+				<Question type="reading" part="7" paragraph="1" image="./image/reading_1_7_1.png" audio="" content="">
+					<Choices id="153" question="What is the purpose of this advertisement?">
+						<A values="To announce a change in business hours" status="true" />
+						<B values="To advertise a business for sale" status="true" />
+						<C values="To encourage diners to eat early" status="true" />
+						<D values="To attract more customers" status="true" />
+					</Choices>
+					<Choices id="154" question="What will customers receive if they spend more than $10?">
+						<A values="A $2 discount on their bill" status="true"/>
+						<B values="50% off their next purchase" status="true" />
+						<C values="A liter of soda" status="true" />
+						<D values="Free delivery service" status="true" />
+					</Choices>
+					<Choices id="155" question="What will happen on June 16?">
+						<A values="A new owner will take over the business." status="true" />
+						<B values="The coupons will expire." status="true" />
+						<C values="Prices will be further reduced." status="true" />
+						<D values="The business will close." status="true" />
+					</Choices>
+				</Question>
+				<Question type="reading" part="7" paragraph="2" image="./image/reading_1_7_2.png" audio="" content="">
+					<Choices id="156" question="What is the article mainly about?">
+						<A values="Corporate marketing plans" status="true" />
+						<B values="New developments in technology" status="true" />
+						<C values="Ways for companies to increase profits" status="true" />
+						<D values="How companies try to adapt to new conditions" status="true" />
+					</Choices>
+					<Choices id="157" question="The word “manage” in paragraph 1, line 6, is closest in meaning to">
+						<A values="correct" status="true"/>
+						<B values="attract" status="true" />
+						<C values="handle" status="true" />
+						<D values="regulate" status="true" />
+					</Choices>
+					<Choices id="158" question="According to the article, why do so many attempts to change fail?">
+						<A values="Soft change and hard change are different." status="true" />
+						<B values="Executives are interested only in profits." status="true" />
+						<C values="The best methods are often not clear." status="true" />
+						<D values="Employees usually resist change." status="true" />
+					</Choices>
+					<Choices id="159" question="What is soft change based on?">
+						<A values="Changes in the corporate culture" status="true" />
+						<B values="Reductions in company size" status="true" />
+						<C values="Relocating businesses" status="true" />
+						<D values="Financial markets" status="true" />
+					</Choices>
+				</Question>
+				<Question type="reading" part="7" paragraph="3" image="./image/reading_1_7_3.png" audio="" content="">
+					<Choices id="160" question="Why was the meeting held?">
+						<A values="To talk about hiring costs" status="true" />
+						<B values="To train software users" status="true" />
+						<C values="To discuss work on a project" status="true" />
+						<D values="To review a contract" status="true" />
+					</Choices>
+					<Choices id="161" question="Who would probably be the best person at Optimum to answer technology questions?">
+						<A values="Ujjwal Ahmed" status="true"/>
+						<B values="Chom Tai" status="true" />
+						<C values="Yusra Singh" status="true" />
+						<D values="Katharine Morandi" status="true" />
+					</Choices>
+					<Choices id="162" question="What is the main purpose of Mr. Ahmed’s e-mail to Ms. Morandi?">
+						<A values="To request a meeting with the engineering department" status="true" />
+						<B values="To introduce Peter Bodell" status="true" />
+						<C values="To follow up on a meeting with Advantage" status="true" />
+						<D values="To explain how Optimum has adapted its software" status="true" />
+					</Choices>
+					<Choices id="163" question="What service will Peter Bodell’s department provide?">
+						<A values="Training and consulting" status="true" />
+						<B values="Legal advice" status="true" />
+						<C values="Publicity" status="true" />
+						<D values="Changes to the software" status="true" />
+					</Choices>
+					<Choices id="164" question="What will happen in the week of November 26?">
+						<A values="Peter Bodell will make a presentation." status="true" />
+						<B values="Optimum and Advantage will meet again." status="true" />
+						<C values="A contract will be signed." status="true" />
+						<D values="Training in the new software will occur." status="true" />
+					</Choices>
+				</Question>
+			</Part>
+		</Question_list>
+		<Answer_sheet>
+			<Text_book id="1">
+				<Answer part="5" id="101">A
+				</Answer>
+				<Answer part="5" id="102">B
+				</Answer>
+				<Answer part="5" id="103">C
+				</Answer>
+				<Answer part="5" id="104">C
+				</Answer>
+				<Answer part="5" id="105">C
+				</Answer>
+				<Answer part="5" id="106">A
+				</Answer>
+				<Answer part="5" id="107">A
+				</Answer>
+				<Answer part="5" id="108">D
+				</Answer>
+				<Answer part="6" id="141">A
+				</Answer>
+				<Answer part="6" id="142">D
+				</Answer>
+				<Answer part="6" id="143">C
+				</Answer>
+				<Answer part="7" id="153">D
+				</Answer>
+				<Answer part="7" id="154">A
+				</Answer>
+				<Answer part="7" id="155">B
+				</Answer>
+				<Answer part="7" id="156">D
+				</Answer>
+				<Answer part="7" id="157">C
+				</Answer>
+				<Answer part="7" id="158">C
+				</Answer>
+				<Answer part="7" id="159">A
+				</Answer>
+				<Answer part="7" id="160">C
+				</Answer>
+				<Answer part="7" id="161">C
+				</Answer>
+				<Answer part="7" id="162">C
+				</Answer>
+				<Answer part="7" id="163">A
+				</Answer>
+				<Answer part="7" id="164">B
+				</Answer>
+			</Text_book>
+		</Answer_sheet>
+	</Text_book>
 </Data>
