@@ -517,7 +517,7 @@
 				<C status="true">correct</C>
 				<D status="true">structure</D>
 				</Choices>
-				</Question>				
+				</Question>
 				<Question type="reading" part="5" id="121" image="" audio="" content="Her latest film ....... its object in a very short space of time, which was to shock.">
 				<Choices>
 				<A status="true">acquired</A>
@@ -1840,7 +1840,7 @@
 			<Answer part="7" id="178">C
 			</Answer>
 		</Text_book>
-		<Text_book id="4"
+		<Text_book id="4">
 			<Answer part="5" id="101">C
 			</Answer>
 			<Answer part="5" id="102">A
