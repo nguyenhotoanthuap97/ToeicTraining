@@ -40,7 +40,7 @@ http.createServer((req, res) => {
     //Set header cho các địa chỉ khác vẫn gửi request đc
     res.setHeader("Access-Control-Allow-Origin", "*");
     if (req.headers.access_token != access_token) {
-        return res.end('deny');
+        return res.end('Access denied!');
     }
     if (req.method.toLocaleUpperCase() == 'GET') {
         //Decode URL
