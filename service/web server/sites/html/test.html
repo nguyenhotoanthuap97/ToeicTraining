@@ -121,7 +121,7 @@
 					<div class="Quiz_reviewQuestion">
 						<ol style="margin-top: 0px !important">
 							<script type="text/javascript">
-								for (i = 1; i <= 65; i++) {
+								for (i = 1; i <= 40; i++) {
 									document.write('<li>' + '<a href="#' + i + '">' + i + '</a></li>');
 								}
 							</script>
@@ -145,7 +145,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" style="margin-top: 50px;">
+			<div class="row" style="margin-top: 50px;" id="ques" name="ques">
+				<div> <p>Part 5</p></div>
 				<div id="1" class="Quiz_header">
 				</div>
 				<div class="Quiz_question" onclick="check(1)">
@@ -158,31 +159,32 @@
 						<li class="Quiz_questionListItem" data-pos="0">
 
 							<label>
-								<input class="Quiz_questionInput" type="radio" name="question_1" value="1"> A. but </label>
+								<input class="Quiz_questionInput" type="radio" name="question_1" value="A"> A. but </label>
 
 						</li>
 
 						<li class="Quiz_questionListItem" data-pos="1">
 
 							<label>
-								<input class="Quiz_questionInput" type="radio" name="question_1" value="2"> B. or </label>
+								<input class="Quiz_questionInput" type="radio" name="question_1" value="B"> B. or </label>
 
 						</li>
 
 						<li class="Quiz_questionListItem" data-pos="2">
 							<label>
-								<input class="Quiz_questionInput" type="radio" name="question_1" value="3"> C. nor </label>
+								<input class="Quiz_questionInput" type="radio" name="question_1" value="C"> C. nor </label>
 
 						</li>
 
 						<li class="Quiz_questionListItem" data-pos="3">
 
 							<label>
-								<input class="Quiz_questionInput" type="radio" name="question_1" value="4"> D. and </label>
+								<input class="Quiz_questionInput" type="radio" name="question_1" value="D"> D. and </label>
 
 						</li>
 					</ul>
-				</div>					
+				</div>	
+				<div> <p>Part 5</p></div>			
 				<div  id="2" class="Quiz_header">
 				</div>
 				<div class="Quiz_question"onclick="check(2)">
@@ -348,5 +350,17 @@
 
 	<script src="../JS/test.js"></script>
 </body>
-
+<script>
+    var data;
+    var tiviList;
+    var contentText;
+    var groupList;
+        //Biến cố khởi động
+        document.body.onload = () => {
+            data = readData();
+            tiviList = readList(data);
+            contentText = parseTivi(tiviList);
+            document.getElementsById("ques")[0].innerHTML = contentText;
+        }
+</script>
 </html>
