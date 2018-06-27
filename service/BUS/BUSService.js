@@ -1,46 +1,85 @@
 const http = require("http");
 const url = require("url");
 const bus = require('./BUS.js');
+const q = require('q');
+var DOMParser = require("xmldom").DOMParser;
+const request = require("request");
+
 const {
     port,
     DALService,
     access_token,
+    DAL_access_token,
 } = require("./config.js");
 
 let cache = undefined;
 
 // Login DAL
-bus.requestLogin();
-console.log("Login hoàn tất!");
-
-
+bus.requestLogin((err, body) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(body);
+    }
+});
 
 //Server
 http.createServer((req, res) => {
+    console.log(req.method, req.url);
     /*res.setHeader("Access-Control-Allow-Origin", "*");
     if (req.headers.access_token != access_token) {
         return res.end('Từ chối truy cập!');
     }*/
-
-    //Đọc dữ liệu và lưu cache
-    cache = bus.ReadAndSaveCache();
 
     if (req.method.toUpperCase() == "GET") {
         //Parse URL
         const {
             pathname,
             query
-        } = URL.parse(req.url, true);
+        } = url.parse(req.url, true);
         switch (pathname) {
             case "/gettestbook":
                 {
-                    var returnData = bus.splitTestBook(cache.testBook);
-                    res.setHeader("Content-type", "text/xml");
-                    res.end(JSON.stringify(returnData));
+                    //Đọc dữ liệu và lưu cache
+                    if (cache === undefined || (cache != undefined && cache[0] === undefined)) {
+                        cache = [];
+                        request({
+                                headers: {
+                                    "access_token": DAL_access_token,
+                                },
+                                url: "http://localhost:3001/gettestbook",
+                                method: "GET"
+                            },
+                            (err, respond, body) => {
+                                if (err) {
+                                    console.log('ERROR: Không lấy được danh sách sách');
+                                    res.setHeader('Content-Type', 'text/plain');
+                                    res.end("Error 404");
+                                } else {
+                                    if (!cache[0]) {
+                                        var data = new DOMParser().parseFromString(body, "text/xml").documentElement;
+                                        cache[0] = data;
+                                        var returnData = bus.splitTestBook(cache[0], query.id);
+                                        res.setHeader("Content-type", "text/xml");
+                                        res.end(JSON.stringify(returnData));
+                                    } else {
+                                        var returnData = bus.splitTestBook(cache[0], query.id);
+                                        res.setHeader("Content-type", "text/xml");
+                                        res.end(JSON.stringify(returnData));
+                                    }
+                                }
+                            });
+                    } else {
+                        var returnData = bus.splitTestBook(cache[0], query.id);
+                        res.setHeader("Content-type", "text/xml");
+                        res.end(JSON.stringify(returnData));
+                    }
                 }
+
                 break;
             case "/getquestionpart":
                 {
+
                     var partList = cache.question.getElementsByTagName(Tag.question.PHAN);
 
                     var returnData = '';

@@ -5,8 +5,7 @@ var XMLSerializer = require("xmldom").XMLSerializer;
 class DAL {
 	readData(path) {
 		var xmlString = fs.readFileSync(path, "UTF-8");
-		var data = new DOMParser().parseFromString(xmlString, "text/xml").documentElement;
-		return data;
+		return xmlString;
 	}
 }
 

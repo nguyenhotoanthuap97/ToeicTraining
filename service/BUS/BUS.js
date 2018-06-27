@@ -9,71 +9,83 @@ const {
 } = require('./config')
 
 class BUS {
-    //request POST login
-    requestLogin() {
-        return new Promise((resolve, reject) => {
-            request({
-                    headers: {
-                        "access_token": DAL_access_token,
-                    },
-                    url: DALService + "/buslogin",
-                    method: "POST"
-                },
-                (err, res, body) => {
-                    if (err) {
-                        return reject(err);
-                    } else {
-                        if (body == '') {
-                            return reject(new Error('Lỗi: Nội dung phản hồi trống!'))
-                        }
-                        return resolve(body);
-                    }
-                }
-            );
-        })
-    }
 
     //Gửi request cho DAL
-    sendRequest(url) {
-        return new Promise((resolve, reject) => {
-            request({
-                    headers: {
-                        "access_token": DAL_access_token,
-                    },
-                    url: url,
-                    method: "GET"
+    sendRequest(url, callback) {
+        request({
+                headers: {
+                    "access_token": DAL_access_token,
                 },
-                (err, res, body) => {
-                    if (err) {
-                        return reject(err);
-                    } else {
-                        if (body == '') {
-                            return reject(new Error('Lỗi: Nội dung phản hồi trống!'))
-                        }
-                        return resolve(body);
-                    }
+                url: url,
+                method: "GET"
+            },
+            (err, res, body) => {
+                if (!err && res.statusCode == 200) {
+                    return callback(body, false);
+                } else {
+                    return callback(null, err);
                 }
-            );
-        })
+            }
+        );
+    }
+
+    //request POST login
+    requestLogin(callback) {
+        request({
+                headers: {
+                    "access_token": DAL_access_token,
+                },
+                url: DALService + "/buslogin",
+                method: "POST"
+            },
+            (err, res, body) => {
+                if (!err && res.statusCode == 200) {
+                    return callback(body, false);
+                } else {
+                    return callback(null, err);
+                }
+            }
+        );
     }
 
     //Request lấy dữ liệu từ DAL
     //Bộ đề
     readTestBook() {
-            let testBook = sendRequest(DALService + requestURL.testbook.read);
-            return testBook;
+            var testBook = this.sendRequest(DALService + requestURL.testbook.read, (body, err) => {
+                if (err) {
+                    console.log("Err:" + err);
+                } else {
+                    testBook = body;
+                    return testBook;
+                }
+            });
         }
         //Câu hỏi
     readQuestion() {
-        let question = sendRequest(DALService + requestURL.question.read);
-        return question;
+        var question = this.sendRequest(DALService + requestURL.question.read, (body, err) => {
+            if (err) {
+                console.log("Err:" + err);
+            } else {
+                question = body;
+                return question;
+            }
+        });
     }
 
     ReadAndSaveCache() {
-        let testbookString = readTestBook();
-        let questionString = readQuestion();
-        let data = [testbookString, questionString];
-        return data;
+        return new Promise((resolve, reject) => {
+            let testbookString = this.readTestBook();
+            console.log(testbookString);
+            let questionString = this.readQuestion();
+            Promise.all([testbookString, questionString]).then(value => {
+                let data = [];
+                data[0] = value[0];
+                data[1] = value[1];
+                return resolve(data);
+            }).catch(err => {
+                return reject(err);
+            })
+        });
     }
 
     //tách dữ liệu
@@ -86,7 +98,7 @@ class BUS {
         var xml = '';
 
         for (var i = 0; i < textbook.length; i++) {
-            if (textbook[i].getAttribute(Attribute.testbook.id) == query.id) {
+            if (textbook[i].getAttribute(Attribute.testbook.id) == id) {
                 xml = textbook[i];
                 break;
             }
@@ -96,8 +108,7 @@ class BUS {
             if (err) {
                 console.log(err);
                 return;
-            }
-            else return result;
+            } else return result;
         })
 
         return returnData;

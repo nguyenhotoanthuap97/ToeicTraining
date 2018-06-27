@@ -17,9 +17,10 @@ var {
 let CacheXMLTestBook = '';
 CacheXMLTestBook = dal.readData(__dirname + "/" + testbook);
 
+
 //Đọc dữ liệu toàn bộ câu hỏi
 let CacheXMLQuestion = '';
-CacheXMLTestBook = dal.readData(__dirname + "/" + question);
+CacheXMLQuestion = dal.readData(__dirname + "/" + question);
 
 //Server
 http.createServer((req, res) => {

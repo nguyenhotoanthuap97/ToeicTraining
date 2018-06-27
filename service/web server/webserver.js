@@ -1,7 +1,9 @@
 var http = require('http');
 var sitePath = './sites/';
 var fs = require('fs');
+var fM = require('./functionModule.js');
 var port = 3000;
+
 
 http.createServer((req, res) => {
 	if (req.url === '/' || req.url ==='/default' || req.url === '/index') {
@@ -14,7 +16,7 @@ http.createServer((req, res) => {
 	}
 	else {
 		fs.readFile('./sites' + req.url, (err, data) => {
-			if (err) {	
+			if (err) {
 				res.writeHead(404, {'Content-Type': 'text/html'});
 				res.write('404! - File not found!');
 				res.end();
