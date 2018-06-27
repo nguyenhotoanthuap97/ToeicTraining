@@ -7,30 +7,6 @@ var request = require("request");
 const port = 3000;
 
 http.createServer((req, res) => {
-    // if (req.url === '/' || req.url ==='/default' || req.url === '/index') {
-    // 	res.writeHead(200, {'Content-Type': 'text/html'});
-    // 	fs.readFile('./sites/html/home.html', (err, data) => {
-    // 		if (err) throw err;
-    // 		res.write(data);
-    // 		res.end();
-    // 	});
-    // }
-    // else {
-    // 	fs.readFile('./sites' + req.url, (err, data) => {
-    // 		if (err) {
-    // 			res.writeHead(404, {'Content-Type': 'text/html'});
-    // 			res.write('404! - File not found!');
-    // 			res.end();
-    // 			throw err;
-    // 			return;
-    // 		}
-    // 		else {
-    // 			res.write(data);
-    // 			return res.end();
-    // 		}
-    // 	});
-    // }
-    console.log(req.method, req.url);
 
     if (req.method.toUpperCase() == "GET") {
 
@@ -38,14 +14,17 @@ http.createServer((req, res) => {
             pathname,
             query,
         } = url.parse(req.url, true);
-        var req_url = "";
-        var dataXml;
+
         switch (pathname) {
             case "/":
             case "/home":
+                req.url += ".html";
                 fM.DocFile("./sites/html/home.html", req, res);
                 break;
             case "/test":
+            case "/test.html":
+                req.url += ".html";
+                var quesList = [];
                 request({
                         headers: {
                             "access_token": "",
@@ -59,14 +38,13 @@ http.createServer((req, res) => {
                             res.setHeader("Content-type", "text/plain");
                             res.end("Err: " + err);
                         } else {
-                        	dataXml = body;
-
+                            quesList = fM.parseTestBook(body);
+                            fM.DocFile("./sites/html/test.html", req, res);
                         }
                     });
-                fM.DocFile("./sites/html/test.html", req, res);
                 break;
             default:
-                fM.DocFile("./sites/html/error.html", req, res);
+                fM.DocFile("./sites" + pathname, req, res);
                 break;
         }
 

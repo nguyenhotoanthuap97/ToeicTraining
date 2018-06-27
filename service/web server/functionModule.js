@@ -4,17 +4,19 @@ var DOMParser = require("xmldom").DOMParser;
 class functionModule {
 
     DocFile(path, req, res) {
-        var file_extension = req.url.lastIndexOf('.');
+        var file_extension = req.url.lastIndexOf(".");
         var header_type = (file_extension == -1 && req.url != '/') ?
             'text/plain' : {
+                '': 'text/html',
                 '/': 'text/html',
                 '.html': 'text/html',
                 '.ico': 'image/x-icon',
                 '.jpg': 'image/jpeg',
                 '.png': 'image/png',
                 '.gif': 'image/gif',
+                '.svg': 'image/svg',
                 '.css': 'text/css',
-                '.js': 'text/javascript'
+                '.js': 'text/javascript',
             }[req.url.substr(file_extension)];
         fs.readFile(path, (err, data) => {
             if (err) {
@@ -29,104 +31,79 @@ class functionModule {
         })
     }
 
-    parseTestBook(xml) {
-        var Testbook = {
-            id: "",
-            QuestionPart5: [],
-            QuestionPart6: [],
-            QuestionPart7: [],
-        };
+    parseTestBook(data) {
+        var xml = new DOMParser().parseFromString(data, "text/xml").documentElement;
 
-        var QuestionPart5 = {
-            id: "",
-            content: "",
-            A: {
-                status: "",
-                value: "",
-            },
-            B: {
-                status: "",
-                value: "",
-            },
-            C: {
-                status: "",
-                value: "",
-            },
-            D: {
-                status: "",
-                value: "",
-            },
+        var list = xml.getElementsByTagName("Part");
+        var quesList = [];
+        var part5 = [];
+        var part6 = [];
+        var part7 = [];
+        var part;
+        for (var i = 0; i < list[0].getElementsByTagName("Question").length; i++) {
+            part = 5;
+            var root = list[0].getElementsByTagName("Question")[i];
+            var id = root.getAttribute("id");
+            var nd = root.getAttribute("content");
+            var choice = root.getElementsByTagName("Choices");
+            var ndA = choice[0].getElementsByTagName("A").innerHTML;
+            var ndB = choice[0].getElementsByTagName("B").innerHTML;
+            var ndC = choice[0].getElementsByTagName("C").innerHTML;
+            var ndD = choice[0].getElementsByTagName("D").innerHTML;
+            part5.push(new CauHoi(id, part, nd, ndA, ndB, ndC, ndD));
         }
 
-        var QuestionPart6 = {
-            id: "",
-            paragraph: "",
-            image: "",
-            Choices: [],
+        for (var pos = 2; pos < 4; pos++) {
+            for (var i = 0; i < list[pos - 1].getElementsByTagName("Question").length; i++) {
+                part = pos + 4;
+                var root = list[pos - 1].getElementsByTagName("Question")[i];
+                var paragraph = root.getAttribute("paragraph");
+                var img = root.getAttribute("image");
+                var listQues = [];
+                var choice = root.getElementsByTagName("Choices");
+                for (var j = 0; j < choice.length; j++) {
+                    var id = choice[j].getAttribute("id");
+                    var ndA = choice[j].getElementsByTagName("A").innerHTML;
+                    var ndB = choice[j].getElementsByTagName("B").innerHTML;
+                    var ndC = choice[j].getElementsByTagName("C").innerHTML;
+                    var ndD = choice[j].getElementsByTagName("D").innerHTML;
+                    if (part == 7) {
+                        var nd = choice[j].getAttribute("question");
+                        listQues.push(new CauHoi(id, part, nd, ndA, ndB, ndC, ndD));
+                    } else {
+                        listQues.push(new CauHoi(id, part, "", ndA, ndB, ndC, ndD));
+                    }
+                }
+                if (part == 7) {
+                    part7.push(paragraph, img, listQues);
+                } else {
+                    part6.push(paragraph, img, listQues);
+                }
+            }
         }
-
-        var ChoicesPart6 = {
-            id: "",
-            A: {
-                status: "",
-                value: "",
-            },
-            B: {
-                status: "",
-                value: "",
-            },
-            C: {
-                status: "",
-                value: "",
-            },
-            D: {
-                status: "",
-                value: "",
-            },
-        }
-
-        var QuestionPart7 = {
-            id: "",
-            paragraph: "",
-            image: "",
-            Choices: [],
-        }
-
-        var ChoicesPart7 = {
-            id: "",
-            Question: "",
-            A: {
-                status: "",
-                value: "",
-            },
-            B: {
-                status: "",
-                value: "",
-            },
-            C: {
-                status: "",
-                value: "",
-            },
-            D: {
-                status: "",
-                value: "",
-            },
-        }
-
-        var data = new DOMParser().parseFromString(xml, "text/xml").documentElement;
-
-        var PartList = data.getElementsByTagName("Part");
-
-        Testbook.id = data.getAttribute("id");
-
-        for (var i = 0; i < PartList.length; i++) {
-            var Part =
-        }
-
+        quesList.push(part5, part6, part7);
+        return quesList;
     }
 
 
 
+}
+
+function CauHoi(id, part, noidung, ndA, ndB, ndC, ndD) {
+    this.id = id;
+    this.noidung = noidung;
+    this.part = part;
+    this.ndA = ndA;
+    this.ndB = ndB;
+    this.ndC = ndC;
+    this.ndD = ndD;
+}
+
+function DapAn(id, part, da, paragraph) {
+    this.id = id;
+    this.part = part;
+    this.da = da;
+    this.paragraph = paragraph;
 }
 
 var fM = new functionModule;
