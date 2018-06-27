@@ -29,7 +29,7 @@ http.createServer((req, res) => {
     if (!(url.parse(req.url, true).pathname == "/buslogin" && req.method == "POST")) {
         if (req.headers.access_token != access_token) {
             console.log("từ chối");
-            return res.end('Truy cập từ chối!');
+            //return res.end('Truy cập từ chối!');
         }
     }
 
