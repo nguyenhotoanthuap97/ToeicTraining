@@ -48,6 +48,13 @@ class BUS {
 
         return xmlString;
     }
+
+    //Lấy số lượng đề
+    getTestBookCount(xml) {
+        var test = xml.getElementsByTagName(Tag.testbook.PHAN_CAU_HOI);
+        var textbook = test[0].getElementsByTagName(Tag.testbook.BO_DE);
+        return textbook.length;
+    }
 }
 
 var bus = new BUS;

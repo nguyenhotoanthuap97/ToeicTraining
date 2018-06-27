@@ -5,6 +5,7 @@ class functionModule {
 
     DocFile(path, req, res) {
         var file_extension = req.url.lastIndexOf(".");
+        console.log(req.url);
         var header_type = (file_extension == -1 && req.url != '/') ?
             'text/plain' : {
                 '': 'text/html',
@@ -17,7 +18,9 @@ class functionModule {
                 '.svg': 'image/svg',
                 '.css': 'text/css',
                 '.js': 'text/javascript',
+                '.map': 'text/css',
             }[req.url.substr(file_extension)];
+        console.log(header_type);
         fs.readFile(path, (err, data) => {
             if (err) {
                 console.log('==> Error: ' + err)
@@ -26,7 +29,7 @@ class functionModule {
                 res.end()
             } else {
                 res.setHeader('Content-type', header_type);
-                res.end(data);
+                res.end(data.toString());
             }
         })
     }
@@ -46,10 +49,10 @@ class functionModule {
             var id = root.getAttribute("id");
             var nd = root.getAttribute("content");
             var choice = root.getElementsByTagName("Choices");
-            var ndA = choice[0].getElementsByTagName("A").innerHTML;
-            var ndB = choice[0].getElementsByTagName("B").innerHTML;
-            var ndC = choice[0].getElementsByTagName("C").innerHTML;
-            var ndD = choice[0].getElementsByTagName("D").innerHTML;
+            var ndA = choice[0].getElementsByTagName("A")[0].childNodes[0].nodeValue;
+            var ndB = choice[0].getElementsByTagName("B")[0].childNodes[0].nodeValue;
+            var ndC = choice[0].getElementsByTagName("C")[0].childNodes[0].nodeValue;
+            var ndD = choice[0].getElementsByTagName("D")[0].childNodes[0].nodeValue;
             part5.push(new CauHoi(id, part, nd, ndA, ndB, ndC, ndD));
         }
 
@@ -63,10 +66,10 @@ class functionModule {
                 var choice = root.getElementsByTagName("Choices");
                 for (var j = 0; j < choice.length; j++) {
                     var id = choice[j].getAttribute("id");
-                    var ndA = choice[j].getElementsByTagName("A").innerHTML;
-                    var ndB = choice[j].getElementsByTagName("B").innerHTML;
-                    var ndC = choice[j].getElementsByTagName("C").innerHTML;
-                    var ndD = choice[j].getElementsByTagName("D").innerHTML;
+                    var ndA = choice[j].getElementsByTagName("A").nodeValue;
+                    var ndB = choice[j].getElementsByTagName("B").nodeValue;
+                    var ndC = choice[j].getElementsByTagName("C").nodeValue;
+                    var ndD = choice[j].getElementsByTagName("D").nodeValue;
                     if (part == 7) {
                         var nd = choice[j].getAttribute("question");
                         listQues.push(new CauHoi(id, part, nd, ndA, ndB, ndC, ndD));

@@ -52,7 +52,7 @@ http.createServer((req, res) => {
                             },
                             (err, respond, body) => {
                                 if (err) {
-                                    console.log('ERROR: Không lấy được danh sách sách');
+                                    console.log('ERROR: Không lấy được dữ liệu');
                                     res.setHeader('Content-Type', 'text/plain');
                                     res.end("Error 404");
                                 } else {
@@ -76,6 +76,42 @@ http.createServer((req, res) => {
                     }
                 }
 
+                break;
+            case "/gettestbookcount":
+                //Đọc dữ liệu và lưu cache
+                if (cache === undefined || (cache != undefined && cache[0] === undefined)) {
+                    cache = [];
+                    request({
+                            headers: {
+                                "access_token": DAL_access_token,
+                            },
+                            url: "http://localhost:3001/gettestbook",
+                            method: "GET"
+                        },
+                        (err, respond, body) => {
+                            if (err) {
+                                console.log('ERROR: Không lấy được dữ liệu');
+                                res.setHeader('Content-Type', 'text/plain');
+                                res.end("Error 404");
+                            } else {
+                                if (!cache[0]) {
+                                    var data = new DOMParser().parseFromString(body, "text/xml").documentElement;
+                                    cache[0] = data;
+                                    var returnData = bus.getTestBookCount(cache[0]);
+                                    res.setHeader("Content-type", "text/xml");
+                                    res.end(returnData.toString());
+                                } else {
+                                    var returnData = bus.getTestBookCount(cache[0]);
+                                    res.setHeader("Content-type", "text/xml");
+                                    res.end(returnData.toString());
+                                }
+                            }
+                        });
+                } else {
+                    var returnData = bus.getTestBookCount(cache[0]);
+                    res.setHeader("Content-type", "text/xml");
+                    res.end(returnData.toString());
+                }
                 break;
             case "/getquestionpart":
                 {

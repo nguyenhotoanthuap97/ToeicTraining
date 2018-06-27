@@ -40,7 +40,7 @@
 	<!-- FullScreen -->
 	<div class="intro-header" style="background-image: url(../Image/background.png);">
 		<div class="col-xs-12 text-center abcen1">
-			<h1 class="h1_home wow fadeIn animated animated" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s;">Toeic Training</h1>
+			<h1 class="h1_home wow fadeIn animated animated" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; font-weight: 900;">Tự luyện Toeic</h1>
 			<h3 class="h3_home wow fadeIn animated animated" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s;">Trắc nghiệm và rèn luyện Toeic</h3>
 			<ul class="list-inline intro-social-buttons">
 				<li>
@@ -103,12 +103,15 @@
 	<div id="whatis" class="content-section-b" style="border-top: 0px none; margin-top: 0px;">
 		<div class="container">
 			<div class=" row ">
-				<div class="col-md-6 col-md-offset-3 text-center wrap_title">
-					<h2>Testing</h2>
-					<p class="lead" style="margin-top:0">Test Toeic</p>
+				<div class="col-md-6 col-md-offset-1 wrap_title">
+					<h2>Thi thử</h2>
+					<p class="lead" style="margin-top:0;">Xin hãy chọn bộ đề</p>
 				</div>
 			</div>
-			<div class="row" style="margin-right: 30px; margin-left: 20px;">
+			<div class="row" id="main-content">
+
+			</div>
+			<!-- <div class="row" style="margin-right: 30px; margin-left: 20px;">
 				<div class="Quiz_reviewDiv" style="">
 					<div class="Quiz_reviewQuestion">
 						<ol style="margin-top: 0px !important">
@@ -215,7 +218,7 @@
 						</li>
 					</ul>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 
@@ -284,16 +287,11 @@
 	<script src="../JS/test.js"></script>
 </body>
 <script>
-    var data;
-    var tiviList;
-    var contentText;
-    var groupList;
+    var testbookCount = 0;
         //Biến cố khởi động
         document.body.onload = () => {
-            /*data = readData();
-            tiviList = readList(data);
-            contentText = parseTivi(tiviList);
-            document.getElementsById("ques")[0].innerHTML = contentText;*/
+	       	testbookCount = +getTestBookCount();
+	       	document.getElementById('main-content').innerHTML = genTestBookList(testbookCount);
         }
 </script>
 </html>

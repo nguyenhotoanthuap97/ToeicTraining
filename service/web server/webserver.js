@@ -23,23 +23,46 @@ http.createServer((req, res) => {
                 break;
             case "/test":
             case "/test.html":
-                req.url += ".html";
-                var quesList = [];
+                if (req.url === "/test")
+                    req.url += ".html";
+                fM.DocFile("./sites/html/test.html", req, res);
+                break;
+            case "/gettestbookcount":
                 request({
                         headers: {
                             "access_token": "",
                         },
-                        url: "http://localhost:3002/gettestbook?id=" + 3,
-                        method: "GET",
+                        url: "http://localhost:3002/gettestbookcount",
+                        method: "GET"
                     },
                     (err, respond, body) => {
                         if (err) {
-                            console.log('ERROR: Không lấy được danh sách sách');
-                            res.setHeader("Content-type", "text/plain");
-                            res.end("Err: " + err);
+                            console.log('ERROR: Không lấy được dữ liệu');
+                            res.setHeader('Content-Type', 'text/plain');
+                            res.end("Error 404");
                         } else {
-                            quesList = fM.parseTestBook(body);
-                            fM.DocFile("./sites/html/test.html", req, res);
+                            res.setHeader("Content-type", "text/plain");
+                            res.end(body.toString());
+                        }
+                    });
+                break;
+            case "/gettestbook":
+                request({
+                        headers: {
+                            "access_token": "",
+                        },
+                        url: "http://localhost:3002/gettestbook?id=" + query.id,
+                        method: "GET"
+                    },
+                    (err, respond, body) => {
+                        if (err) {
+                            console.log('ERROR: Không lấy được dữ liệu');
+                            res.setHeader('Content-Type', 'text/plain');
+                            res.end("Error 404");
+                        } else {
+                            var returnData = fM.parseTestBook(body);
+                            res.setHeader("Content-type", "text/xml");
+                            res.end(returnData);
                         }
                     });
                 break;
