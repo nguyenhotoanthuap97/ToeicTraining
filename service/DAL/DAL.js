@@ -1,6 +1,5 @@
 var fs = require("fs");
 var DOMParser = require("xmldom").DOMParser;
-var XMLSerializer = require("xmldom").XMLSerializer;
 
 class DAL {
 	readData(path) {

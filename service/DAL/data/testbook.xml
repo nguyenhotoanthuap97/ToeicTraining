@@ -16,16 +16,6 @@
 	</Reading>
 	<Test>
 		<Text_book id="1">
-			<Part id="1">
-				<Question type="listening" part="1" id="1" image="" audio="" content="">
-				<Choices>
-				<A status="true"></A>
-				<B status="true"></B>
-				<C status="true"></C>
-				<D status="false"></D>
-				</Choices>
-				</Question>
-			</Part>
 			<Part id="5">
 				<Question type="reading" part="5" id="101" image="" audio="" content="Register early if you would like to attend next Tuesday’s ....... on project management.">
 				<Choices>
@@ -328,16 +318,6 @@
 			</Part>
 		</Text_book>
 		<Text_book id="2">
-			<Part id="1">
-				<Question type="listening" part="1" id="1" image="" audio="" content="">
-				<Choices>
-				<A status="true"></A>
-				<B status="true"></B>
-				<C status="true"></C>
-				<D status="false"></D>
-				</Choices>
-				</Question>
-			</Part>
 			<Part id="5">
 				<Question type="reading" part="5" id="101" image="" audio="" content="Tell us something about your ....... in the engineering industry?">
 				<Choices>
@@ -640,16 +620,6 @@
 			</Part>
 		</Text_book>
 		<Text_book id="3">
-			<Part id="1">
-				<Question type="listening" part="1" id="1" image="" audio="" content="">
-				<Choices>
-				<A status="true"></A>
-				<B status="true"></B>
-				<C status="true"></C>
-				<D status="false"></D>
-				</Choices>
-				</Question>
-			</Part>
 			<Part id="5">
 				<Question type="reading" part="5" id="101" image="" audio="" content="The stock market has hit new ....... this year.">
 				<Choices>
@@ -952,16 +922,6 @@
 			</Part>
 		</Text_book>
 		<Text_book id="4">
-			<Part id="1">
-				<Question type="listening" part="1" id="1" image="" audio="" content="">
-				<Choices>
-				<A status="true"></A>
-				<B status="true"></B>
-				<C status="true"></C>
-				<D status="false"></D>
-				</Choices>
-				</Question>
-			</Part>
 			<Part id="5">
 				<Question type="reading" part="5" id="101" image="" audio="" content=" It's a gamble at the moment whether the company will make profit in its second year but that nevertheless is the ....... aim">
 				<Choices>
@@ -1264,16 +1224,6 @@
 			</Part>
 		</Text_book>
 		<Text_book id="5">
-			<Part id="1">
-				<Question type="listening" part="1" id="1" image="" audio="" content="">
-				<Choices>
-				<A status="true"></A>
-				<B status="true"></B>
-				<C status="true"></C>
-				<D status="false"></D>
-				</Choices>
-				</Question>
-			</Part>
 			<Part id="5">
 				<Question type="reading" part="5" id="101" image="" audio="" content="You can be absolutely sure I'm on your ........">
 				<Choices>

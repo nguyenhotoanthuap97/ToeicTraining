@@ -61,18 +61,18 @@ http.createServer((req, res) => {
                                         cache[0] = data;
                                         var returnData = bus.splitTestBook(cache[0], query.id);
                                         res.setHeader("Content-type", "text/xml");
-                                        res.end(JSON.stringify(returnData));
+                                        res.end(returnData);
                                     } else {
                                         var returnData = bus.splitTestBook(cache[0], query.id);
                                         res.setHeader("Content-type", "text/xml");
-                                        res.end(JSON.stringify(returnData));
+                                        res.end(returnData);
                                     }
                                 }
                             });
                     } else {
                         var returnData = bus.splitTestBook(cache[0], query.id);
                         res.setHeader("Content-type", "text/xml");
-                        res.end(JSON.stringify(returnData));
+                        res.end(returnData);
                     }
                 }
 
@@ -141,6 +141,9 @@ http.createServer((req, res) => {
     } else if (req.method.toUpperCase() == "POST") {
         return res.end();
     }
-}).listen(port, server => {
-    console.log("server listen on", port);
+}).listen(port, (err) => {
+    if (err != null)
+        console.log('==> Error: ' + err);
+    else
+        console.log('Server is starting at port ' + port);
 })

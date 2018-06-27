@@ -89,6 +89,9 @@ http.createServer((req, res) => {
     } else {
         return res.end();
     }
-}).listen(port, server => {
-    console.log("Listen on port ", port);
+}).listen(port, (err) => {
+    if (err != null)
+        console.log('==> Error: ' + err);
+    else
+        console.log('Server is starting at port ' + port);
 });

@@ -1,82 +1,83 @@
-var http = require('http');
-var sitePath = './sites/';
-var fs = require('fs');
-var fM = require('./functionModule.js');
-var port = 3000;
-
+const http = require('http');
+const sitePath = './sites/';
+const fs = require('fs');
+const fM = require('./functionModule.js');
+const url = require("url");
+var request = require("request");
+const port = 3000;
 
 http.createServer((req, res) => {
-	// if (req.url === '/' || req.url ==='/default' || req.url === '/index') {
-	// 	res.writeHead(200, {'Content-Type': 'text/html'});
-	// 	fs.readFile('./sites/html/home.html', (err, data) => {
-	// 		if (err) throw err;
-	// 		res.write(data);
-	// 		res.end();
-	// 	});
-	// }
-	// else {
-	// 	fs.readFile('./sites' + req.url, (err, data) => {
-	// 		if (err) {	
-	// 			res.writeHead(404, {'Content-Type': 'text/html'});
-	// 			res.write('404! - File not found!');
-	// 			res.end();
-	// 			throw err;
-	// 			return;
-	// 		}
-	// 		else {
-	// 			res.write(data);
-	// 			return res.end();
-	// 		}
-	// 	});
-	// }
+    // if (req.url === '/' || req.url ==='/default' || req.url === '/index') {
+    // 	res.writeHead(200, {'Content-Type': 'text/html'});
+    // 	fs.readFile('./sites/html/home.html', (err, data) => {
+    // 		if (err) throw err;
+    // 		res.write(data);
+    // 		res.end();
+    // 	});
+    // }
+    // else {
+    // 	fs.readFile('./sites' + req.url, (err, data) => {
+    // 		if (err) {
+    // 			res.writeHead(404, {'Content-Type': 'text/html'});
+    // 			res.write('404! - File not found!');
+    // 			res.end();
+    // 			throw err;
+    // 			return;
+    // 		}
+    // 		else {
+    // 			res.write(data);
+    // 			return res.end();
+    // 		}
+    // 	});
+    // }
+    console.log(req.method, req.url);
 
-	//console.log(`${req.method} ${req.url}`);
-	var req_url;
-	console.log(req.url);
-	if(req.url == '/'){
-		req_url= './sites/html/home.html';
-	}
-	else if(req.url =='/home.html'){
-		req_url = './sites/html/home.html';
-			if (err) {
-	else if(req.url =='/test.html'){
-		req_url = './sites/html/test.html';
-	}
-	else{
-		req_url = './sites/'+req.url;
-	}
-	var file_extension = req.url.lastIndexOf('.');
-	var header_type = (file_extension == -1 && req.url != '/') ?
-		'text/plain' :
-		{
-			'/': 'text/html',
-			'.html': 'text/html',
-			'.ico': 'image/x-icon',
-			'.jpg': 'image/jpeg',
-			'.png': 'image/png',
-			'.gif': 'image/gif',
-			'.svg': 'image/svg+xml',
-			'.css': 'text/css',
-			'.js': 'text/javascript',
-			'.woff':'font/woff',
-			'.woff2':'font/woff2',
-		}[req.url.substr(file_extension)];
-	console.log(req.url.substr(file_extension), file_extension);
-	fs.readFile( req_url, (err, data) => {
-		if (err) {
-			console.log('==> Error: ' + err)
-			console.log('==> Error 404: file not found ' + res.url)
-			res.writeHead(404, 'Not found')
-			res.end()
-		} else {
-			res.setHeader('Content-type', header_type);
-			res.end(data);
-            console.log(req.url, header_type);
-		}
-	})
+    if (req.method.toUpperCase() == "GET") {
+
+        const {
+            pathname,
+            query,
+        } = url.parse(req.url, true);
+        var req_url = "";
+        var dataXml;
+        switch (pathname) {
+            case "/":
+            case "/home":
+                fM.DocFile("./sites/html/home.html", req, res);
+                break;
+            case "/test":
+                request({
+                        headers: {
+                            "access_token": "",
+                        },
+                        url: "http://localhost:3002/gettestbook?id=" + 3,
+                        method: "GET",
+                    },
+                    (err, respond, body) => {
+                        if (err) {
+                            console.log('ERROR: Không lấy được danh sách sách');
+                            res.setHeader("Content-type", "text/plain");
+                            res.end("Err: " + err);
+                        } else {
+                        	dataXml = body;
+
+                        }
+                    });
+                fM.DocFile("./sites/html/test.html", req, res);
+                break;
+            default:
+                fM.DocFile("./sites/html/error.html", req, res);
+                break;
+        }
+
+    } else if (req.method.toUpperCase() == "POST") {
+
+    } else {
+
+    }
 }).listen(port, (err) => {
-	if (err != null)
-		console.log('==> Error: ' + err)
-	else
-		console.log('Server is starting at port ' + port)
+    if (err != null)
+        console.log('==> Error: ' + err)
+    else
+        console.log('Server is starting at port ' + port)
 })
