@@ -1,0 +1,51 @@
+.part{
+    float: left;
+    width: 150px;
+    margin-right: 40px;
+    margin-left: 300px;
+}
+.question{
+    float: left;
+    width: 200px;
+    margin-right: 50px;
+}
+.viewPart{
+    margin-top: 20px;
+    margin-left: 300px;
+    margin-bottom: 50px;
+    width: 200px;
+    text-align: center;
+}
+.edit{
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+.quesContent{
+    width: 1050px;
+}
+.resultlabel{
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.result_ques{
+    width: 50px;
+    position: relative;
+    margin-left: 10px;
+}
+.next {
+    background-color: #4CAF50;
+    color: white;
+}
+.previous {
+    background-color: #f1f1f1;
+    color: black;
+}
+.buttonMove{
+    margin-top: 10px;
+    margin-left: 450px;
+}
+.buttonConfirm{
+    margin-top: 10px;
+    margin-left: 385px;
+}
