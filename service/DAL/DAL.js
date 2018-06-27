@@ -1,5 +1,4 @@
 var fs = require("fs");
-const xml2js = require("xml2js");
 var DOMParser = require("xmldom").DOMParser;
 var XMLSerializer = require("xmldom").XMLSerializer;
 

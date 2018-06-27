@@ -1,32 +1,15 @@
 <Data>
 	<Website>Luyện thi Toeic online</Website>
-	<Listening>
-		<Description>In the Listening test, you will be asked to demonstrate how well you understand spoken English. The entire Listening test will last approximately 45 minutes. There are four parts, and directions are given for each part. You must mark your answers on the separate answer sheet. Do not write your answers in your test book.</Description>
-		<Part-list>
-			<Part id=1>
-				Directions: For each question in this part, you will hear four statements about a picture in your test book. When you hear the statements, you must select the one statement that best describes what you see in the picture. Then find the number of the question on your answer sheet and mark your answer. The statements will not be printed in your test book and will be spoken only one time.
-			</Part>
-			<Part id=2>
-				Directions: You will hear a question or statement and three responses spoken in English. They will not be printed in your test book and will be spoken only one time. Select the best response to the question or statement and mark the letter (A), (B), or (C) on your answer sheet.
-			</Part>
-			<Part id=3>
-				Directions: You will hear some conversations between two people. You will be asked to answer three questions about what the speakers say in each conversation. Select the best response to each question and mark the letter (A), (B), (C), or (D) on your answer sheet. The conversations will not be printed in your test book and will be spoken only one time.
-			</Part>
-			<Part id=4>
-				Directions: You will hear some talks given by a single speaker. You will be asked to answer three questions about what the speaker says in each talk. Select the best response to each question and mark the letter (A), (B), (C), or (D) on your answer sheet. The talks will not be printed in your test book and will be spoken only one time.
-			</Part>
-		</Part-list>
-	</Listening>
 	<Reading>
 		<Description>In the Reading test, you will read a variety of texts and answer several different types of reading comprehension questions. The entire Reading test will last 75 minutes. There are three parts, and directions are given for each part. You are encouraged to answer as many questions as possible within the time allowed.</Description>
 		<Part-list>
-			<Part id=5>
+			<Part id="5">
 				Directions: A word or phrase is missing in each of the sentences below. Four answer choices are given below each sentence. Select the best answer to complete the sentence. Then mark the letter (A), (B), (C), or (D) on your answer sheet.
 			</Part>
-			<Part id=6>
+			<Part id="6">
 				Directions: Read the texts that follow. A word or phrase is missing in some of the sentences. Four answer choices are given below each of the sentences. Select the best answer to complete the text. Then mark the letter (A), (B), (C), or (D) on your answer sheet.
 			</Part>
-			<Part id=7>
+			<Part id="7">
 				Directions: In this part you will read a selection of texts, such as magazine and newspaper articles, letters, and advertisements. Each text is followed by several questions. Select the best answer for each question and mark the letter (A), (B), (C), or (D) on your answer sheet.
 			</Part>
 		</Part-list>
@@ -492,15 +475,15 @@
 				<B status="true">lies</B>
 				<C status="true">lay</C>
 				<D status="true">lays</D>
-				</Choiclies
+				</Choices>
 				</Question>
 				<Question type="reading" part="5" id="118" image="" audio="" content="Although technically his judgement was not according to the ....... of the law, most people thought the judgeprintwas right to let the man go free.">
-				<Chonumber
+				<Choices>
 				<A status="true">print</A>
 				<B status="true">number</B>
 				<C status="true">point</C>
 				<D status="true">letter</D>
-				</Chonumber
+				</Choices>
 				</Question>
 				<Question type="reading" part="5" id="119" image="" audio="" content="I get the impression sometimes that she thinks she can never do anything wrong almost as if she is ....... the law">
 				<Choices>

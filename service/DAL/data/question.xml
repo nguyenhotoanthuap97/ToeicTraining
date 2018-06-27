@@ -1,4 +1,4 @@
-<part id=5>
+<part id="5">
 	<Question type="reading" part="5" id="1" image="" audio="" content="Register early if you would like to attend next Tuesday’s ....... on project management.">
 	<Choices>
 	<A status="true">seminar</A>
@@ -305,15 +305,15 @@
 	<B status="true">lies</B>
 	<C status="true">lay</C>
 	<D status="true">lays</D>
-	</Choiclies
+	</Choices>
 	</Question>
 	<Question type="reading" part="5" id="39" image="" audio="" content="Although technically his judgement was not according to the ....... of the law, most people thought the judgeprintwas right to let the man go free.">
-	<Chonumber
+	<Choices>
 	<A status="true">print</A>
 	<B status="true">number</B>
 	<C status="true">point</C>
 	<D status="true">letter</D>
-	</Chonumber
+	</Choices>
 	</Question>
 	<Question type="reading" part="5" id="40" image="" audio="" content="I get the impression sometimes that she thinks she can never do anything wrong almost as if she is ....... the law">
 	<Choices>
@@ -850,7 +850,7 @@
 	</Choices>
 	</Question>
 </part>
-<part id=6>
+<part id="6">
 	<Question type="reading" part="6" paragraph="1" image="./image/reading_1_6_1.png" audio="" content="">
 	<Choices id="141">
 	<A status="true">pleased</A>
@@ -1058,7 +1058,7 @@
 	</Choices>
 	</Question>
 </part>
-<part id=7>
+<part id="7">
 	<Question type="reading" part="7" paragraph="1" image="./image/reading_1_7_1.png" audio="" content="">
 	<Choices id="153" question="What is the purpose of this advertisement?">
 	<A status="true">To announce a change in business hours</A>
@@ -1475,7 +1475,7 @@
 	</Question>
 </part>
 <Answer_sheet>
-	<part id=5>
+	<part id="5">
 		<Answer part="5" id="1">A
 		</Answer>
 		<Answer part="5" id="2">B
@@ -1687,8 +1687,8 @@
 		<Answer part="5" id="105">C
 		</Answer>
 	</part>
-	<part id=6>
-		<paragraph id=1>
+	<part id="6">
+		<paragraph id="1">
 			<Answer part="6" id="131">C
 			</Answer>
 			<Answer part="6" id="132">A
@@ -1698,7 +1698,7 @@
 			<Answer part="6" id="134">B
 			</Answer>
 		</paragraph>
-		<paragraph id=2>
+		<paragraph id="2">
 			<Answer part="6" id="141">A
 			</Answer>
 			<Answer part="6" id="142">D
@@ -1706,7 +1706,7 @@
 			<Answer part="6" id="143">C
 			</Answer>
 		</paragraph>
-		<paragraph id=3>
+		<paragraph id="3">
 			<Answer part="6" id="141">D
 			</Answer>
 			<Answer part="6" id="142">D
@@ -1714,7 +1714,7 @@
 			<Answer part="6" id="143">C
 			</Answer>
 		</paragraph>
-		<paragraph id=4>
+		<paragraph id="4">
 			<Answer part="6" id="144">A
 			</Answer>
 			<Answer part="6" id="145">A
@@ -1722,7 +1722,7 @@
 			<Answer part="6" id="146">C
 			</Answer>
 		</paragraph>
-		<paragraph id=5>
+		<paragraph id="5">
 			<Answer part="6" id="141">D
 			</Answer>
 			<Answer part="6" id="142">C
@@ -1730,7 +1730,7 @@
 			<Answer part="6" id="143">C
 			</Answer>
 		</paragraph>
-		<paragraph id=6>
+		<paragraph id='6'>
 			<Answer part="6" id="144">A
 			</Answer>
 			<Answer part="6" id="145">D
@@ -1738,7 +1738,7 @@
 			<Answer part="6" id="146">C
 			</Answer>
 		</paragraph>
-		<paragraph id=7>
+		<paragraph id='7'>
 			<Answer part="6" id="141">D
 			</Answer>
 			<Answer part="6" id="142">C
@@ -1746,7 +1746,7 @@
 			<Answer part="6" id="143">B
 			</Answer>
 		</paragraph>
-		<paragraph id=8>
+		<paragraph id="8">
 			<Answer part="6" id="144">B
 			</Answer>
 			<Answer part="6" id="145">C
@@ -1754,7 +1754,7 @@
 			<Answer part="6" id="146">A
 			</Answer>
 		</paragraph>
-		<paragraph id=9>
+		<paragraph id="9">
 			<Answer part="6" id="147">C
 			</Answer>
 			<Answer part="6" id="148">D
@@ -1762,7 +1762,7 @@
 			<Answer part="6" id="149">D
 			</Answer>
 		</paragraph>
-		<paragraph id=10>
+		<paragraph id="10">
 			<Answer part="6" id="150">C
 			</Answer>
 			<Answer part="6" id="151">C
@@ -1771,8 +1771,8 @@
 			</Answer>
 		</paragraph>
 	</part>
-	<part id=7>
-		<paragraph id=1>
+	<part id="7">
+		<paragraph id="1">
 			<Answer part="7" id="153">D
 			</Answer>
 			<Answer part="7" id="154">A
@@ -1780,7 +1780,7 @@
 			<Answer part="7" id="155">B
 			</Answer>
 		</paragraph>
-		<paragraph id=2>
+		<paragraph id="2">
 			<Answer part="7" id="156">D
 			</Answer>
 			<Answer part="7" id="157">C
@@ -1790,7 +1790,7 @@
 			<Answer part="7" id="159">A
 			</Answer>
 		</paragraph>
-		<paragraph id=3>
+		<paragraph id="3">
 			<Answer part="7" id="160">C
 			</Answer>
 			<Answer part="7" id="161">C
@@ -1802,7 +1802,7 @@
 			<Answer part="7" id="164">B
 			</Answer>
 		</paragraph>
-		<paragraph id=4>
+		<paragraph id="4">
 			<Answer part="7" id="157">A
 			</Answer>
 			<Answer part="7" id="158">D
@@ -1812,7 +1812,7 @@
 			<Answer part="7" id="160">C
 			</Answer>
 		</paragraph>
-		<paragraph id=5>
+		<paragraph id="5">
 			<Answer part="7" id="169">C
 			</Answer>
 			<Answer part="7" id="170">A
@@ -1822,7 +1822,7 @@
 			<Answer part="7" id="172">D
 			</Answer>
 		</paragraph>
-		<paragraph id=6>
+		<paragraph id="6">
 			<Answer part="7" id="176">A
 			</Answer>
 			<Answer part="7" id="177">D
@@ -1834,7 +1834,7 @@
 			<Answer part="7" id="180">C
 			</Answer>
 		</paragraph>
-		<paragraph id=7>
+		<paragraph id='7'>
 			<Answer part="7" id="181">C
 			</Answer>
 			<Answer part="7" id="182">B
@@ -1846,7 +1846,7 @@
 			<Answer part="7" id="185">B
 			</Answer>
 		</paragraph>
-		<paragraph id=8>
+		<paragraph id="8">
 			<Answer part="7" id="160">C
 			</Answer>
 			<Answer part="7" id="161">A
@@ -1854,7 +1854,7 @@
 			<Answer part="7" id="162">D
 			</Answer>
 		</paragraph>
-		<paragraph id=9>
+		<paragraph id="9">
 			<Answer part="7" id="174">B
 			</Answer>
 			<Answer part="7" id="175">B
@@ -1866,7 +1866,7 @@
 			<Answer part="7" id="178">C
 			</Answer>
 		</paragraph>
-		<paragraph id=10>
+		<paragraph id="10">
 			<Answer part="7" id="167">D
 			</Answer>
 			<Answer part="7" id="168">D
@@ -1876,7 +1876,7 @@
 			<Answer part="7" id="170">C
 			</Answer>
 		</paragraph>
-		<paragraph id=11>
+		<paragraph id="11">
 			<Answer part="7" id="191">B
 			</Answer>
 			<Answer part="7" id="192">A
@@ -1888,7 +1888,7 @@
 			<Answer part="7" id="195">C
 			</Answer>
 		</paragraph>
-		<paragraph id=12>
+		<paragraph id="12">
 			<Answer part="7" id="174">C
 			</Answer>
 			<Answer part="7" id="175">A
@@ -1898,7 +1898,7 @@
 			<Answer part="7" id="177">B
 			</Answer>
 		</paragraph>
-		<paragraph id=13>
+		<paragraph id="13">
 			<Answer part="7" id="167">D
 			</Answer>
 			<Answer part="7" id="168">B
@@ -1908,7 +1908,7 @@
 			<Answer part="7" id="170">B
 			</Answer>
 		</paragraph>
-		<paragraph id=14>
+		<paragraph id="14">
 			<Answer part="7" id="174">C
 			</Answer>
 			<Answer part="7" id="175">A
@@ -1918,7 +1918,7 @@
 			<Answer part="7" id="177">B
 			</Answer>
 		</paragraph>
-		<paragraph id=15>
+		<paragraph id="15">
 			<Answer part="7" id="181">B
 			</Answer>
 			<Answer part="7" id="182">C
