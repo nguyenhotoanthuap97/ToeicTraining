@@ -1,3 +1,5 @@
+
+
 function check(n) {
     var string = 'question_' + n;
     var a = document.getElementsByName(string);
@@ -182,7 +184,21 @@ function readData() {
 }
 
 function login() {
-    var usn = getElementById("usn")
+    var usn = document.getElementById("usn").getAttribute("value");
+    var pwd = document.getElementById("pwd").getAttribute("value");
+
+    var login = "http://localhost:3000/login";
+    var Xu_ly_HTTP = new XMLHttpRequest();
+    Xu_ly_HTTP.open("POST", login, false);
+    Xu_ly_HTTP.setRequestHeader("usn", usn);
+    Xu_ly_HTTP.setRequestHeader("pw", pwd);
+
+    Xu_ly_HTTP.send();
+    var token = Xu_ly_HTTP.responseText;
+
+    if (token != 'null') {
+        document.getElementById("login-group").innerHTML = "Chào mừng <br/>" + token;
+    }
 }
 
 function CauHoi(id, part, noidung, ndA, ndB, ndC, ndD) {

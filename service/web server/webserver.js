@@ -143,6 +143,18 @@ http.createServer((req, res) => {
                         }
                     });
                 break;
+            case "/SuaCauHoi":
+            case "/SuaCauHoi.html":
+                if (pathname === "/SuaCauHoi")
+                    req.url = pathname + ".html";
+                fM.DocFile("./sites/html/SuaCauHoi.html", req, res);
+                break;
+            case "/QL_DuyetCauHoi":
+            case "/QL_DuyetCauHoi.html":
+                if (pathname === "/QL_DuyetCauHoi")
+                    req.url = pathname + ".html";
+                fM.DocFile("./sites/html/QL_DuyetCauHoi.html", req, res);
+                break;
             default:
                 fM.DocFile("./sites" + pathname, req, res);
                 break;
@@ -174,9 +186,8 @@ http.createServer((req, res) => {
                                 token = respond.get("token");
                                 res.writeHead(200, {
                                     'Content-Type': 'text/plain',
-                                    'token': acc.token
                                 });
-                                res.end();
+                                res.end(acc.token);
                             }
                         });
                 }
