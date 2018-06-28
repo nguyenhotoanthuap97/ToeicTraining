@@ -55,6 +55,7 @@ class BUS {
         var textbook = test[0].getElementsByTagName(Tag.testbook.BO_DE);
         return textbook.length;
     }
+
 }
 
 var bus = new BUS;

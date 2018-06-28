@@ -6,9 +6,14 @@ module.exports = {
     giaovien: {
         username: "giaovien",
         password: "thu1512559",
+        role: "gv",
+        token: "thu",
     },
     quanly: {
         username: "quanly",
         password: "hai1512144",
+        role: "ql",
+        token: "hai",
     },
+
 }

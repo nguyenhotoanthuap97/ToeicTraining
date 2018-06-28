@@ -119,7 +119,7 @@ http.createServer((req, res) => {
                             res.setHeader('Content-Type', 'text/plain');
                             res.end("Error 404");
                         } else {
-                            var returnData = fM.parseQuestion(body, 5);
+                            var returnData = fM.parseQuestion(body, query.id);
                             res.setHeader("Content-type", "text/xml");
                             res.end(JSON.stringify(returnData));
                         }
@@ -172,10 +172,10 @@ http.createServer((req, res) => {
                     request({
                             headers: {
                                 "access_token": '',
-                                "usn": req.headers.usn,
+                                "usn": "",
                                 "pw": req.headers.pw,
                             },
-                            url: "http://localhost:3001/login",
+                            url: "http://localhost:3002/login",
                             method: "POST"
                         },
                         (err, respond, body) => {
@@ -184,11 +184,10 @@ http.createServer((req, res) => {
                                 res.setHeader('Content-Type', 'text/plain');
                                 res.end("Error 404");
                             } else {
-                                token = respond.get("token");
                                 res.writeHead(200, {
                                     'Content-Type': 'text/plain',
                                 });
-                                res.end(acc.token);
+                                res.end(body);
                             }
                         });
                 }

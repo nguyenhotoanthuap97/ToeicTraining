@@ -360,10 +360,12 @@ http.createServer((req, res) => {
                                 res.setHeader('Content-Type', 'text/plain');
                                 res.end("Error 404");
                             } else {
-                                acc.token = respond.get("token");
-                                acc.role = respond.get("role");
+                                var temp = JSON.parse(body);
+                                acc.token = temp.token;
+                                acc.role = temp.role;
+                                console.log(body);
                                 res.writeHead(200, {'Content-Type': 'text/plain'});
-                                res.end(token.toString());
+                                res.end(acc.token.toString());
                             }
                         });
                 }

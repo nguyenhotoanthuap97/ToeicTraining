@@ -11,6 +11,8 @@ var {
     access_token,
     Tag,
     Attribute,
+    giaovien,
+    quanly,
 } = require("./config.js");
 
 //Đọc dữ liệu vào cache
@@ -31,6 +33,7 @@ http.createServer((req, res) => {
     if (!((url.parse(req.url, true).pathname == "/buslogin" && req.method == "POST") || url.parse(req.url, true).pathname == "/getimage")) {
         if (req.headers.access_token != access_token) {
             console.log("từ chối");
+            console.log(req.url + " " + req.headers.access_token);
             return res.end('Truy cập từ chối!');
         }
     }
@@ -77,13 +80,13 @@ http.createServer((req, res) => {
                 {
                     let body = '';
 
-                    req.on('data', function (data) {
+                    req.on('data', function(data) {
                         body += data;
                         if (body.length > 1e6)
                             req.connection.destroy();
                     });
 
-                    req.on('end', function () {
+                    req.on('end', function() {
                         let postdata = qs.parse(body);
 
                         if (postdata.id == undefined ||
@@ -125,26 +128,30 @@ http.createServer((req, res) => {
             case "/login":
                 {
                     let id = 0;
-                    $.getJSON("account.json", function (data) {
-                        $.each(data, function (index, value) {
-                            if (value.usn === req.headers.usn && value.pw === req.headers.pw) {
-                                res.writeHead(200, {
-                                    "Content-type": "text",
-                                    "token": value.token,
-                                    "role": value.role
-                                });
-                                res.end();
-                                id = 1;
-                            }
-                        })
-                    });
-                    if (id != 1) {
+                    console.log(req.headers.usn);
+                    console.log(req.headers.pw);
+                    if (req.headers.usn == giaovien.username && req.headers.pw == giaovien.password) {
                         res.writeHead(200, {
                             "Content-type": "text",
-                            "token": "null",
-                            "role": "null",
                         });
-                        res.end();
+                        var acc = {
+                            "token": giaovien.token,
+                            "role": giaovien.role
+                        };
+                        res.end(JSON.stringify(acc));
+                    }
+                    else if (req.headers.usn == quanly.username && req.headers.pw == quanly.password) {
+                        res.writeHead(200, {
+                            "Content-type": "text",
+                        });
+                        var acc = {
+                            "token": quanly.token,
+                            "role": quanly.role
+                        };
+                        res.end(JSON.stringify(acc));
+                    }
+                    else {
+                        res.end("sai");
                     }
                 }
                 break;
