@@ -4,6 +4,7 @@ const bus = require('./BUS.js');
 const q = require('q');
 var DOMParser = require("xmldom").DOMParser;
 const request = require("request");
+var XMLSerializer = require("xmldom").XMLSerializer;
 
 const {
     port,
@@ -115,57 +116,189 @@ http.createServer((req, res) => {
                 break;
             case "/getquestionpart":
                 {
-
-                    var partList = cache.question.getElementsByTagName(Tag.question.PHAN);
-
-                    var returnData = '';
-
-                    for (var i = 0; i < partList.length; i++) {
-                        if (partList[i].getAttribute(Attribute.question.id) == query.id) {
-                            returnData = partList[i];
-                            break;
-                        }
+                    //Đọc dữ liệu và lưu cache
+                    if (cache === undefined || (cache != undefined && cache[1] === undefined)) {
+                        cache = [];
+                        request({
+                                headers: {
+                                    "access_token": DAL_access_token,
+                                },
+                                url: "http://localhost:3001/getquestion",
+                                method: "GET"
+                            },
+                            (err, respond, body) => {
+                                if (err) {
+                                    console.log('ERROR: Không lấy được dữ liệu');
+                                    res.setHeader('Content-Type', 'text/plain');
+                                    res.end("Error 404");
+                                } else {
+                                    if (!cache[1]) {
+                                        var data = new DOMParser().parseFromString(body, "text/xml").documentElement;
+                                        cache[1] = data;
+                                        res.setHeader("Content-type", "text/xml");
+                                        res.end(body);
+                                    } else {
+                                        var returnData = body;
+                                        res.setHeader("Content-type", "text/xml");
+                                        res.end(returnData);
+                                    }
+                                }
+                            });
+                    } else {
+                        var oSerializer = new XMLSerializer();
+                        var returnData = oSerializer.serializeToString(cache[1]);
+                        res.setHeader("Content-type", "text/xml");
+                        res.end(returnData);
                     }
-
-                    res.setHeader("Content-type", "text/xml");
-                    res.end(returnData);
                 }
                 break;
             case "/getanswersheettestbook":
                 {
+                    //Đọc dữ liệu và lưu cache
+                    if (cache === undefined || (cache != undefined && cache[0] === undefined)) {
+                        cache = [];
+                        request({
+                                headers: {
+                                    "access_token": DAL_access_token,
+                                },
+                                url: "http://localhost:3001/gettestbook",
+                                method: "GET"
+                            },
+                            (err, respond, body) => {
+                                if (err) {
+                                    console.log('ERROR: Không lấy được dữ liệu');
+                                    res.setHeader('Content-Type', 'text/plain');
+                                    res.end("Error 404");
+                                } else {
+                                    if (!cache[0]) {
+                                        var data = new DOMParser().parseFromString(body, "text/xml").documentElement;
+                                        cache[0] = data;
 
-                    var answerSheet = cache.testBook.getElementsByTagName(Tag.testbook.PHAN_DAP_AN);
+                                        var answerSheet = cache[0].getElementsByTagName(Tag.testbook.PHAN_DAP_AN);
 
-                    var tbAnswer = answerSheet[0].getElementsByTagName(Tag.testbook.BO_DE);
+                                        var tbAnswer = answerSheet[0].getElementsByTagName(Tag.testbook.BO_DE);
+                                        var d;
+                                        for (var i = 0; i < tbAnswer.length; i++) {
+                                            if (tbAnswer[i].getAttribute(Attribute.testbook.id) == query.id) {
+                                                d = tbAnswer[i];
+                                            }
+                                        }
+                                        var oSerializer = new XMLSerializer();
+                                        var returnData = oSerializer.serializeToString(d);
+                                        res.setHeader("Content-type", "text/xml");
+                                        res.end(returnData);
+                                    } else {
 
-                    var returnData = '';
+                                        var answerSheet = cache[0].getElementsByTagName(Tag.testbook.PHAN_DAP_AN);
 
-                    for (var i = 0; i < tbAnswer.length; i++) {
-                        if (tbAnswer[i].getAttribute(Attribute.testbook.id) == query.id) {
-                            returnData = tbAnswer[i];
+                                        var tbAnswer = answerSheet[0].getElementsByTagName(Tag.testbook.BO_DE);
+                                        var d;
+                                        for (var i = 0; i < tbAnswer.length; i++) {
+                                            if (tbAnswer[i].getAttribute(Attribute.testbook.id) == query.id) {
+                                                d = tbAnswer[i];
+                                            }
+                                        }
+                                        var oSerializer = new XMLSerializer();
+                                        var returnData = oSerializer.serializeToString(d);
+                                        res.setHeader("Content-type", "text/xml");
+                                        res.end(returnData);
+                                    }
+                                }
+                            });
+                    } else {
+                        var answerSheet = cache[0].getElementsByTagName(Tag.testbook.PHAN_DAP_AN);
+
+                        var tbAnswer = answerSheet[0].getElementsByTagName(Tag.testbook.BO_DE);
+                        var d;
+                        for (var i = 0; i < tbAnswer.length; i++) {
+                            if (tbAnswer[i].getAttribute(Attribute.testbook.id) == query.id) {
+                                d = tbAnswer[i];
+                            }
                         }
+                        var oSerializer = new XMLSerializer();
+                        var returnData = oSerializer.serializeToString(d);
+                        res.setHeader("Content-type", "text/xml");
+                        res.end(returnData);
                     }
 
-                    res.setHeader("Content-type", "text/xml");
-                    res.end(returnData);
                 }
                 break;
             case "/getanswersheetpart":
                 {
-                    var answerSheet = cache.question.getElementsByTagName(Tag.question.PHAN_DAP_AN);
+                    //Đọc dữ liệu và lưu cache
+                    if (cache === undefined || (cache != undefined && cache[1] === undefined)) {
+                        cache = [];
+                        request({
+                                headers: {
+                                    "access_token": DAL_access_token,
+                                },
+                                url: "http://localhost:3001/getquestion",
+                                method: "GET"
+                            },
+                            (err, respond, body) => {
+                                if (err) {
+                                    console.log('ERROR: Không lấy được dữ liệu');
+                                    res.setHeader('Content-Type', 'text/plain');
+                                    res.end("Error 404");
+                                } else {
+                                    if (!cache[1]) {
+                                        var data = new DOMParser().parseFromString(body, "text/xml").documentElement;
+                                        cache[1] = data;
 
-                    var partList = answerSheet[0].getElementsByTagName(Tag.question.PHAN);
+                                        var answerSheet = cache[1].getElementsByTagName(Tag.question.PHAN_DAP_AN);
 
-                    var returnData = '';
+                                        var partList = answerSheet[0].getElementsByTagName(Tag.question.PHAN);
 
-                    for (var i = 0; i < partList.length; i++) {
-                        if (partList[i].getAttribute(Attribute.question.id) == query.id) {
-                            returnData = partList[i];
+                                        var d;
+
+                                        for (var i = 0; i < partList.length; i++) {
+                                            if (partList[i].getAttribute(Attribute.question.id) == query.id) {
+                                                d = partList[i];
+                                            }
+                                        }
+                                        var oSerializer = new XMLSerializer();
+                                        var returnData = oSerializer.serializeToString(d);
+                                        res.setHeader("Content-type", "text/xml");
+                                        res.end(returnData);
+
+                                    } else {
+
+                                        var answerSheet = cache[1].getElementsByTagName(Tag.question.PHAN_DAP_AN);
+
+                                        var partList = answerSheet[0].getElementsByTagName(Tag.question.PHAN);
+
+                                        var d;
+
+                                        for (var i = 0; i < partList.length; i++) {
+                                            if (partList[i].getAttribute(Attribute.question.id) == query.id) {
+                                                d = partList[i];
+                                            }
+                                        }
+                                        var oSerializer = new XMLSerializer();
+                                        var returnData = oSerializer.serializeToString(d);
+                                        res.setHeader("Content-type", "text/xml");
+                                        res.end(returnData);
+                                    }
+                                }
+                            });
+                    } else {
+                        var answerSheet = cache[1].getElementsByTagName(Tag.question.PHAN_DAP_AN);
+
+                        var partList = answerSheet[0].getElementsByTagName(Tag.question.PHAN);
+
+                        var d;
+
+                        for (var i = 0; i < partList.length; i++) {
+                            if (partList[i].getAttribute(Attribute.question.id) == query.id) {
+                                d = partList[i];
+                            }
                         }
+                        var oSerializer = new XMLSerializer();
+                        var returnData = oSerializer.serializeToString(d);
+                        res.setHeader("Content-type", "text/xml");
+                        res.end(returnData);
                     }
 
-                    res.setHeader("Content-type", "text/xml");
-                    res.end(returnData);
                 }
                 break;
             case "/getimage":

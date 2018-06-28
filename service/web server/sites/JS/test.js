@@ -32,7 +32,8 @@ function getTestBook(id) {
 function loadTestBook(id) {
     var XMLString = getTestBook(id);
     var quesList = JSON.parse(XMLString);
-    console.log(quesList);
+    document.getElementById("title-h2").innerHTML = "Bộ đề số " + id;
+    document.getElementById("title-sub").innerHTML = "Bạn có 40 phút để làm bài";
     document.getElementById("main-content").innerHTML = parseQues(quesList);
 }
 
