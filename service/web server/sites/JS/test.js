@@ -19,20 +19,36 @@ function getTestBookCount() {
     return Chuoi_XML;
 }
 
+function getTestBook(id) {
+    var Dia_chi_Dich_vu = "http://localhost:3000/gettestbook?id=" + id;
+    var Xu_ly_HTTP = new XMLHttpRequest();
+    Xu_ly_HTTP.open("GET", Dia_chi_Dich_vu, false);
+    Xu_ly_HTTP.send("");
+    var Chuoi_XML = Xu_ly_HTTP.responseText;
+
+    return Chuoi_XML;
+}
+
+function loadTestBook(id) {
+    var XMLString = getTestBook(id);
+    var quesList = JSON.parse(XMLString);
+    console.log(quesList);
+    document.getElementById("main-content").innerHTML = parseQues(quesList);
+}
+
 function genTestBookList(n) {
-    var text = '<table><tr>';
+    var text = '<table class="col-sm-12 col-md-12"><tr style="height: 120px;">';
     var j = 0;
     for (var i = 0; i < n; i++) {
-        text += '<td class="col-sm-3 col-md-3"><button type="button" class="btn btn-default" style="width: 100px; height: 80px; font-size: 16px">' + (i + 1) + '</button></td>';
+        text += '<td class="col-sm-3 col-md-3"><button type="button" class="btn btn-default" style="width: 100%; height: 100px; font-size: 20px" onclick="loadTestBook(' + (i + 1) + ')">' + (i + 1) + '</button></td>';
         j++;
         if (j == 4) {
             text += '</tr>';
             if (i < n - 1) {
-                text += '<tr>';
+                text += '<tr style="height: 120px;">';
             }
             j = 0;
-        }
-        else if (i == n - 1) {
+        } else if (i == n - 1) {
             text += '</tr>';
         }
     }
@@ -95,27 +111,56 @@ function readList(xml) {
 
 function parseQues(list) {
     var count = 1;
-    var text = '<div > <p> Part 5 </p></div >';
+    var text = `<div class="row" style="margin-right: 30px; margin-left: 20px;">
+                    <div class="Quiz_reviewDiv" style="">
+                        <div class="Quiz_reviewQuestion">
+                            <ol style="margin-top: 0px !important">`
+    for (var i = 1; i <= 40; i++) {
+        text += '<li>' + '<a href="#' + i + '">' + i + '</a></li>';
+    }
+    text += `           </ol>
+                            <div style="top: 5px;"></div>
+                        </div>
+                        <div class="Quiz_reviewLabel">
+                            <ol>
+                                <li>
+                                    <span class="Quiz_reviewColor" style="background-color: #6CA54C;"></span>
+                                    <span class="Quiz_reviewText">Answered</span>
+                                </li>
+                                <li>
+                                    <span class="Quiz_reviewColor" style="background-color: #FFB800;"></span>
+                                    <span class="Quiz_reviewText">Review</span>
+                                </li>
+                            </ol>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                </div>`;
+    text += '<div > <h3> Part 5 </h3></div >';
     for (var i = 0; i < list.part5.length; i++) {
-        text += '<div id = "' + count + '" class = "Quiz_header"></div> <div class = "Quiz_question" onclick = "check(' + count + ')" ><div class = "Quiz_question_text" ><p >' + count + '.' + list.part5[i].CauHoi.noidung + '</p> </div> <ul class = "Quiz_questionList"><li class = "Quiz_questionListItem" data - pos = "0"><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].CauHoi.id + '" value = "A" > A.' + list.part5[i].CauHoi.ndA + '</label></li><li class = "Quiz_questionListItem" data - pos = "1" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].CauHoi.id + '" value = "B" > B.' + list.part5[i].CauHoi.ndB + '</label></li><li class = "Quiz_questionListItem" data - pos = "2" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].CauHoi.id + '" value = "C" > C.' + list.part5[i].CauHoi.ndC + ' </label></li><li class = "Quiz_questionListItem" data - pos = "3" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].CauHoi.id + '" value = "D" > D.' + list.part5[i].CauHoi.ndA + ' </label></li></ul > </div>';
+        text += '<div id = "' + count + '" class = "Quiz_header"></div> <div class = "Quiz_question" onclick = "check(' + count + ')" ><div class = "Quiz_question_text" ><p >' + count + '.' + list.part5[i].noidung + '</p> </div> <ul class = "Quiz_questionList"><li class = "Quiz_questionListItem" data - pos = "0"><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].id + '" value = "A" > A.' + list.part5[i].ndA + '</label></li><li class = "Quiz_questionListItem" data - pos = "1" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].id + '" value = "B" > B.' + list.part5[i].ndB + '</label></li><li class = "Quiz_questionListItem" data - pos = "2" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].d + '" value = "C" > C.' + list.part5[i].ndC + ' </label></li><li class = "Quiz_questionListItem" data - pos = "3" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].id + '" value = "D" > D.' + list.part5[i].ndA + ' </label></li></ul > </div>';
         count++;
     }
-    text += '<div> <p> Part 6 </p></div >';
-    for (var i = 0; i < list.part6.length; i++) {
-        text += '<div name="' + list.part6[i].paragraph + '"> <img src="' + list.part6[i].img + '" alt=""></div> ';
+    text += '<div> <h3> Part 6 </h3></div >';
+    for (var i = 0; i < list.part6.listQues.length; i++) {
+        text += '<div> <h4>Bài đọc ' + list.part6.paragraph + '</h4></div >';
+        text += '<div name="' + list.part6.paragraph + '"> <img src="http://localhost:3001/getimage?name=' + list.part6.img.substring(8, 21) + '" alt="" width="800px"></div> ';
 
-        for (var j = 0; j < list.part6[i].listQues.length; j++) {
-            text += '<div id = "' + count + '" class = "Quiz_header"></div> <div class = "Quiz_question" onclick = "check(' + count + ')" ><div class = "Quiz_question_text" ><p >' + count + '.' + list.part6[i].listQues[j].CauHoi.noidung + '</p> </div> <ul class = "Quiz_questionList"><li class = "Quiz_questionListItem" data - pos = "0"><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6[i].listQues[j].CauHoi.id + '" value = "A" > A.' + list.part6[i].listQues[j].CauHoi.ndA + '</label></li><li class = "Quiz_questionListItem" data - pos = "1" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6[i].listQues[j].CauHoi.id + '" value = "B" > B.' + list.part6[i].listQues[j].CauHoi.ndB + '</label></li><li class = "Quiz_questionListItem" data - pos = "2" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6[i].listQues[j].CauHoi.id + '" value = "C" > C.' + list.part6[i].listQues[j].CauHoi.ndC + ' </label></li><li class = "Quiz_questionListItem" data - pos = "3" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6[i].listQues[j].CauHoi.id + '" value = "D" > D.' + list.part6[i].listQues[j].CauHoi.ndA + ' </label></li></ul > </div>';
+        for (var j = 0; j < list.part6.listQues.length; j++) {
+            text += '<div id = "' + count + '" class = "Quiz_header"></div> <div class = "Quiz_question" onclick = "check(' + count + ')" ><div class = "Quiz_question_text" ><p >' + count + '.' + list.part6.listQues[j].noidung + '</p> </div> <ul class = "Quiz_questionList"><li class = "Quiz_questionListItem" data - pos = "0"><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6.listQues[j].id + '" value = "A" > A.' + list.part6.listQues[j].ndA + '</label></li><li class = "Quiz_questionListItem" data - pos = "1" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6.listQues[j].id + '" value = "B" > B.' + list.part6.listQues[j].ndB + '</label></li><li class = "Quiz_questionListItem" data - pos = "2" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6.listQues[j].id + '" value = "C" > C.' + list.part6.listQues[j].ndC + ' </label></li><li class = "Quiz_questionListItem" data - pos = "3" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6.listQues[j].id + '" value = "D" > D.' + list.part6.listQues[j].ndA + ' </label></li></ul > </div>';
             count++;
         }
     }
 
-    text += '<div > <p> Part 7 </p></div >';
-    for (var i = 0; i < list.part6.length; i++) {
-        text += '<div name="' + list.part7[i].paragraph + '"> <img src="' + list.part7[i].img + '" alt=""></div> ';
+    text += '<div> <h3> Part 7 </h3></div >';
+    for (var i = 0; i < list.part7.listQues.length; i++) {
+        text += '<div> <h4>Bài đọc ' + list.part7.paragraph + '</h4></div >';
+        text += '<div name="' + list.part7.paragraph + '"> <img src="http://localhost:3001/getimage?name=' + list.part7.img.substring(8, 21) + '" alt="" width="800px"></div> ';
 
-        for (var j = 0; j < list.part6[i].listQues.length; j++) {
-            text += '<div id = "' + count + '" class = "Quiz_header"></div> <div class = "Quiz_question" onclick = "check(' + count + ')" ><div class = "Quiz_question_text" ><p >' + count + '.' + list.part7[i].listQues[j].CauHoi.noidung + '</p> </div> <ul class = "Quiz_questionList"><li class = "Quiz_questionListItem" data - pos = "0"><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7[i].listQues[j].CauHoi.id + '" value = "A" > A.' + list.part7[i].listQues[j].CauHoi.ndA + '</label></li><li class = "Quiz_questionListItem" data - pos = "1" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7[i].listQues[j].CauHoi.id + '" value = "B" > B.' + list.part7[i].listQues[j].CauHoi.ndB + '</label></li><li class = "Quiz_questionListItem" data - pos = "2" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7[i].listQues[j].CauHoi.id + '" value = "C" > C.' + list.part7[i].listQues[j].CauHoi.ndC + ' </label></li><li class = "Quiz_questionListItem" data - pos = "3" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7[i].listQues[j].CauHoi.id + '" value = "D" > D.' + list.part7[i].listQues[j].CauHoi.ndA + ' </label></li></ul > </div>';
+        for (var j = 0; j < list.part6.listQues.length; j++) {
+            text += '<div id = "' + count + '" class = "Quiz_header"></div> <div class = "Quiz_question" onclick = "check(' + count + ')" ><div class = "Quiz_question_text" ><p >' + count + '.' + list.part7.listQues[j].noidung + '</p> </div> <ul class = "Quiz_questionList"><li class = "Quiz_questionListItem" data - pos = "0"><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7.listQues[j].id + '" value = "A" > A.' + list.part7.listQues[j].ndA + '</label></li><li class = "Quiz_questionListItem" data - pos = "1" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7.listQues[j].id + '" value = "B" > B.' + list.part7.listQues[j].ndB + '</label></li><li class = "Quiz_questionListItem" data - pos = "2" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7.listQues[j].id + '" value = "C" > C.' + list.part7.listQues[j].ndC + ' </label></li><li class = "Quiz_questionListItem" data - pos = "3" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7.listQues[j].id + '" value = "D" > D.' + list.part7.listQues[j].ndA + ' </label></li></ul > </div>';
             count++;
         }
     }

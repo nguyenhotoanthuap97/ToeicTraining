@@ -36,7 +36,11 @@ class functionModule {
         var xml = new DOMParser().parseFromString(data, "text/xml").documentElement;
 
         var list = xml.getElementsByTagName("Part");
-        var quesList = [];
+        var quesList = {
+            part5,
+            part6,
+            part7,
+        };
         var part5 = [];
         var part6 = [];
         var part7 = [];
@@ -76,13 +80,15 @@ class functionModule {
                     }
                 }
                 if (part == 7) {
-                    part7.push(paragraph, img, listQues);
+                    part7 = {paragraph, img, listQues};
                 } else {
-                    part6.push(paragraph, img, listQues);
+                    part6 = {paragraph, img, listQues};
                 }
             }
         }
-        quesList.push(part5, part6, part7);
+        quesList.part5 = part5;
+        quesList.part6 = part6;
+        quesList.part7 = part7;
         return quesList;
     }
 

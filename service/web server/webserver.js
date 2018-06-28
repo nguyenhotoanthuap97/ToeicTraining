@@ -27,6 +27,13 @@ http.createServer((req, res) => {
                     req.url += ".html";
                 fM.DocFile("./sites/html/test.html", req, res);
                 break;
+            case "/testbook":
+            case "/testbook.html":
+                req.url = pathname;
+                if (pathname === "/testbook")
+                    req.url += ".html";
+                fM.DocFile("./sites/html/testbook.html", req, res);
+                break;
             case "/gettestbookcount":
                 request({
                         headers: {
@@ -62,7 +69,29 @@ http.createServer((req, res) => {
                         } else {
                             var returnData = fM.parseTestBook(body);
                             res.setHeader("Content-type", "text/xml");
-                            res.end(returnData);
+                            res.end(JSON.stringify(returnData));
+                        }
+                    });
+                break;
+            case "/getimage":
+                request({
+                        headers: {
+                            "access_token": "",
+                        },
+                        url: "http://localhost:3002/getimage?name=" + query.name,
+                        method: "GET"
+                    },
+                    (err, respond, body) => {
+                        if (err) {
+                            console.log('ERROR: Không lấy được dữ liệu');
+                            res.setHeader('Content-Type', 'text/plain');
+                            res.end("Error 404");
+                        } else {
+                            var img = body;
+                            res.writeHead(200, {
+                                'Content-type': 'image/png'
+                            });
+                            res.end(img, 'binary');
                         }
                     });
                 break;

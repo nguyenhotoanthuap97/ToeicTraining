@@ -3,6 +3,7 @@ const qs = require("querystring");
 const url = require("url");
 const fs = require("fs");
 const dal = require("./DAL.js");
+var path = require('path');
 var {
     port,
     question,
@@ -27,10 +28,10 @@ http.createServer((req, res) => {
     console.log(req.method, req.url);
     //Set header cho các địa chỉ khác vẫn gửi request đc
     res.setHeader("Access-Control-Allow-Origin", "*");
-    if (!(url.parse(req.url, true).pathname == "/buslogin" && req.method == "POST")) {
+    if (!((url.parse(req.url, true).pathname == "/buslogin" && req.method == "POST") || url.parse(req.url, true).pathname == "/getimage")) {
         if (req.headers.access_token != access_token) {
             console.log("từ chối");
-            //return res.end('Truy cập từ chối!');
+            return res.end('Truy cập từ chối!');
         }
     }
 
@@ -61,6 +62,15 @@ http.createServer((req, res) => {
 
                     res.setHeader("Content-type", "text/xml");
                     res.end(CacheXMLQuestion);
+                }
+                break;
+            case "/getimage":
+                {
+                    var img = fs.readFileSync("./data/image/" + query.name + ".png");
+                    res.writeHead(200, {
+                        'Content-Type': 'image/png'
+                    });
+                    res.end(img, 'binary');
                 }
                 break;
             default:

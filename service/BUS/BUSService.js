@@ -168,7 +168,30 @@ http.createServer((req, res) => {
                     res.end(returnData);
                 }
                 break;
-
+            case "/getimage":
+                {
+                    request({
+                            headers: {
+                                "access_token": DAL_access_token,
+                            },
+                            url: "http://localhost:3001/getimage?name=" + query.name,
+                            method: "GET"
+                        },
+                        (err, respond, body) => {
+                            if (err) {
+                                console.log('ERROR: Không lấy được dữ liệu');
+                                res.setHeader('Content-Type', 'text/plain');
+                                res.end("Error 404");
+                            } else {
+                                var img = body;
+                                res.writeHead(200, {
+                                    'Content-type': 'image/png'
+                                });
+                                res.end(img, 'binary');
+                            }
+                        });
+                }
+                break;
             default:
                 res.setHeader("Content-type", "text/xml");
                 res.end();
