@@ -73,6 +73,37 @@ http.createServer((req, res) => {
                     res.end(img, 'binary');
                 }
                 break;
+            case '/question/update':
+                {
+                    let body = '';
+
+                    req.on('data', function (data) {
+                        body += data;
+                        if (body.length > 1e6)
+                            req.connection.destroy();
+                    });
+
+                    req.on('end', function () {
+                        let postdata = qs.parse(body);
+
+                        if (postdata.id == undefined ||
+                            postdata.part == undefined ||
+                            postdata.CacCauHoi == undefined) {
+                            res.setHeader("Content-type", "text/xml");
+                            return res.end();
+                        }
+
+                        let id = postdata.id;
+                        let part = postdata.part;
+                        let CacCauHoi = postdata.CacCauHoi;
+                        let maNguoiDuyet = postdata.maNguoiDuyet;
+                        let result = DAL.cauHoiUpdate(pathDataCauHoi, CacheXMLQuestion, part, id, CacCauHoi);
+                        res.setHeader("Content-type", "text/xml");
+                        res.end(result[1]);
+                        CacheXMLQuestion = result[0];
+                    });
+                }
+                break;
             default:
                 res.setHeader("Content-type", "text/xml");
                 res.end();
@@ -94,8 +125,8 @@ http.createServer((req, res) => {
             case "/login":
                 {
                     let id = 0;
-                    $.getJSON("account.json", function(data) {
-                        $.each(data, function(index, value) {
+                    $.getJSON("account.json", function (data) {
+                        $.each(data, function (index, value) {
                             if (value.usn === req.headers.usn && value.pw === req.headers.pw) {
                                 res.writeHead(200, {
                                     "Content-type": "text",
