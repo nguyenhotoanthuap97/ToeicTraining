@@ -37,29 +37,41 @@ class DAL {
         })
     }
 
-    cauHoiUpdate = (pathData, xmlDomBoDe, part, maNguoiTao, CacCauHoi) => {
+    cauHoiUpdate(pathData, xmlDomBoDe, part, id, CacCauHoi){
         let ds_Cau_Hoi = CacCauHoi.map((item, index) => {
           return {
             $: {
-              'Question': CacCauHoi[index],
-              'A' : CacCauHoi[index].ndA,
-              'B' : CacCauHoi[index].ndB,
-              'C' : CacCauHoi[index].ndC,
-              'D' : CacCauHoi[index].ndD
+              A: CacCauHoi[index].ndA,
+              B: CacCauHoi[index].ndB,
+              C: CacCauHoi[index].ndC,
+              D: CacCauHoi[index].ndD,
+              content: CacCauHoi[index].content,
+              id: CacCauHoi.id,
             }
           }
         })
       
-        let boDeMoi = {
-          DS_CAU_HOI: [{
-            'CAU': ds_Cau_Hoi
+        let Question = {    
+            $: {
+            'type': "reading",
+             'part':part,
+            'id': CacCauHoi.id,
+             'image':"",
+            'audio':"",
+            'content':ds_Cau_Hoi.content,
+          },
+            Choices: [{
+            A: ds_Cau_Hoi.A,
+            B: ds_Cau_Hoi.B,
+            C: ds_Cau_Hoi.C,
+            D: ds_Cau_Hoi.D
           }]
         }
       
-        //tim bo de co ma tuong ung va thay
-        for(let i = 0; i < xmlDomBoDe.DS_BO_DE.DE.length; i++){
-          if(xmlDomBoDe.DS_BO_DE.DE[i].$.Ma_de == maDe){
-            xmlDomBoDe.DS_BO_DE.DE[i] = boDeMoi;
+        //tim part
+        for(let i = 0; i < xmlDomBoDe.part.Question.length; i++){
+          if(xmlDomBoDe.part.Question[i].$.id == id){
+            xmlDomBoDe.part.Question[i] = Question;
             break;
           }
         }
