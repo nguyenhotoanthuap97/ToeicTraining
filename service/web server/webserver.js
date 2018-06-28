@@ -110,7 +110,27 @@ http.createServer((req, res) => {
                         res.setHeader('Content-Type', 'text/plain');
                         res.end("Error 404");
                     } else {
-                        var returnData = fM.parseQuestion(body);
+                        var returnData = fM.parseQuestion(body, query.id);
+                        res.setHeader("Content-type", "text/xml");
+                        res.end(returnData);
+                    }
+                });
+            break;
+            case "/getanswersheetpart":
+            request({
+                    headers: {
+                        "access_token": "",
+                    },
+                    url: "http://localhost:3002/getanswersheetpart?id=" + query.id,
+                    method: "GET"
+                },
+                (err, respond, body) => {
+                    if (err) {
+                        console.log('ERROR: Không lấy được dữ liệu');
+                        res.setHeader('Content-Type', 'text/plain');
+                        res.end("Error 404");
+                    } else {
+                        var returnData = fM.parseAnswer(body, query.id);
                         res.setHeader("Content-type", "text/xml");
                         res.end(returnData);
                     }

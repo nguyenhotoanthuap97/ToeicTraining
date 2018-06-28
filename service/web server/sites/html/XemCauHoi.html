@@ -158,6 +158,7 @@
 							</label>
 						</li>
 					</ul>
+					<div><label for="result" class="resultlabel">Đáp án</label><div name="result" id="result">A</div></div>
 					<button class="btn btn-primary edit">Chỉnh sửa</button>
 				</div>
 			</div>
@@ -291,9 +292,11 @@
 </body>
 <script>
 	var list;
+	var ansList;
 	//Biến cố khởi động
 	document.body.onload = () => {
 			   list = getPart(5);
+			   ansList = getAnswer(5);
 			   temp = parseQuestion(list, 1);
 			   document.getElementById('main-content').innerHTML = temp;
 	}
