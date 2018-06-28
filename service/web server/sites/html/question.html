@@ -192,7 +192,6 @@
 			   list = getQuestion();
 			   temp = parseQuestion(list);
 			   document.getElementById('main-content').innerHTML = temp;
-			   text.push(temp);
 	}
 	function pre(){
 		if(countD ===0){
@@ -200,15 +199,18 @@
 		}
 		else
 		{
+			text[countD] = document.getElementById('main-content').innerHTML;
 			document.getElementById('main-content').innerHTML = text[count-1];
 			countD = countD - 1;
 		}
 	}
 	function next(){
+		text.push(document.getElementById('main-content').innerHTML);
 		if(countD == count){
 			   temp = parseQuestion(list);
 			   document.getElementById('main-content').innerHTML = temp;
-				text.push(temp);
+			   count++;
+			   countD++;
 		}
 		else{
 			document.getElementById('main-content').innerHTML = text[countD+1];
