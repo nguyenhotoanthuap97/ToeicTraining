@@ -94,9 +94,8 @@ class functionModule {
         return quesList;
     }
     parseQuestion(data) {
-        var xml = new DOMParser().parseFromString(data, "text/xml").documentElement;
-
-        var list = xml.getElementsByTagName("Part");
+        var xml = new DOMParser().parseFromString(data, "text/xml");
+        var list = xml.getElementsByTagName("part");
         var part5 = [];
         var part;
         for (var i = 0; i < list[0].getElementsByTagName("Question").length; i++) {
@@ -111,7 +110,10 @@ class functionModule {
             var ndD = choice[0].getElementsByTagName("D")[0].childNodes[0].nodeValue;
             part5.push(new CauHoi(id, part, nd, ndA, ndB, ndC, ndD));
         }
-        return part5;
+        var List = {
+            part5: part5,
+        };
+        return List;
     }
 }
 

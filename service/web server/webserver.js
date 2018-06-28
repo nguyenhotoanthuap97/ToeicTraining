@@ -34,6 +34,13 @@ http.createServer((req, res) => {
                     req.url += ".html";
                 fM.DocFile("./sites/html/testbook.html", req, res);
                 break;
+            case "/question":
+            case "/question.html":
+                req.url = pathname;
+                if (pathname === "/question")
+                    req.url += ".html";
+                fM.DocFile("./sites/html/question.html", req, res);
+                break;
             case "/gettestbookcount":
                 request({
                         headers: {
@@ -95,7 +102,7 @@ http.createServer((req, res) => {
                         }
                     });
                 break;
-                
+
             case "/getquestionpart":
             request({
                     headers: {
@@ -112,7 +119,7 @@ http.createServer((req, res) => {
                     } else {
                         var returnData = fM.parseQuestion(body);
                         res.setHeader("Content-type", "text/xml");
-                        res.end(returnData);
+                        res.end(JSON.stringify(returnData));
                     }
                 });
             break;
