@@ -18,6 +18,8 @@ class functionModule {
                 '.css': 'text/css',
                 '.js': 'text/javascript',
                 '.map': 'text/css',
+                '.woff':'font/woff',
+                '.woff2':'font/woff2',
             }[req.url.substr(file_extension)];
         fs.readFile(path, (err, data) => {
             if (err) {
@@ -91,9 +93,26 @@ class functionModule {
         quesList.part7 = part7;
         return quesList;
     }
+    parseQuestion(data) {
+        var xml = new DOMParser().parseFromString(data, "text/xml").documentElement;
 
-
-
+        var list = xml.getElementsByTagName("Part");
+        var part5 = [];
+        var part;
+        for (var i = 0; i < list[0].getElementsByTagName("Question").length; i++) {
+            part = 5;
+            var root = list[0].getElementsByTagName("Question")[i];
+            var id = root.getAttribute("id");
+            var nd = root.getAttribute("content");
+            var choice = root.getElementsByTagName("Choices");
+            var ndA = choice[0].getElementsByTagName("A")[0].childNodes[0].nodeValue;
+            var ndB = choice[0].getElementsByTagName("B")[0].childNodes[0].nodeValue;
+            var ndC = choice[0].getElementsByTagName("C")[0].childNodes[0].nodeValue;
+            var ndD = choice[0].getElementsByTagName("D")[0].childNodes[0].nodeValue;
+            part5.push(new CauHoi(id, part, nd, ndA, ndB, ndC, ndD));
+        }
+        return part5;
+    }
 }
 
 function CauHoi(id, part, noidung, ndA, ndB, ndC, ndD) {

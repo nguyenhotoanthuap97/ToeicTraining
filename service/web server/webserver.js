@@ -95,6 +95,27 @@ http.createServer((req, res) => {
                         }
                     });
                 break;
+                
+            case "/getquestionpart":
+            request({
+                    headers: {
+                        "access_token": "",
+                    },
+                    url: "http://localhost:3002/getquestionpart?id=" + query.id,
+                    method: "GET"
+                },
+                (err, respond, body) => {
+                    if (err) {
+                        console.log('ERROR: Không lấy được dữ liệu');
+                        res.setHeader('Content-Type', 'text/plain');
+                        res.end("Error 404");
+                    } else {
+                        var returnData = fM.parseQuestion(body);
+                        res.setHeader("Content-type", "text/xml");
+                        res.end(returnData);
+                    }
+                });
+            break;
             default:
                 fM.DocFile("./sites" + pathname, req, res);
                 break;
