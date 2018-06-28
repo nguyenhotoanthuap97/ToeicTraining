@@ -5,7 +5,6 @@ class functionModule {
 
     DocFile(path, req, res) {
         var file_extension = req.url.lastIndexOf(".");
-        console.log(req.url);
         var header_type = (file_extension == -1 && req.url != '/') ?
             'text/plain' : {
                 '': 'text/html',
@@ -20,7 +19,6 @@ class functionModule {
                 '.js': 'text/javascript',
                 '.map': 'text/css',
             }[req.url.substr(file_extension)];
-        console.log(header_type);
         fs.readFile(path, (err, data) => {
             if (err) {
                 console.log('==> Error: ' + err)
@@ -29,7 +27,7 @@ class functionModule {
                 res.end()
             } else {
                 res.setHeader('Content-type', header_type);
-                res.end(data.toString());
+                res.end(data);
             }
         })
     }
