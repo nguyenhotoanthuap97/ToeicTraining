@@ -104,34 +104,90 @@ http.createServer((req, res) => {
                 break;
 
             case "/getquestionpart":
-            request({
-                    headers: {
-                        "access_token": "",
+                request({
+                        headers: {
+                            "access_token": "",
+                        },
+                        url: "http://localhost:3002/getquestionpart",
+                        method: "GET"
                     },
-                    url: "http://localhost:3002/getquestionpart?id=" + query.id,
-                    method: "GET"
-                },
-                (err, respond, body) => {
-                    if (err) {
-                        console.log('ERROR: Không lấy được dữ liệu');
-                        res.setHeader('Content-Type', 'text/plain');
-                        res.end("Error 404");
-                    } else {
-                        var returnData = fM.parseQuestion(body);
-                        res.setHeader("Content-type", "text/xml");
-                        res.end(JSON.stringify(returnData));
-                    }
-                });
-            break;
+                    (err, respond, body) => {
+                        if (err) {
+                            console.log('ERROR: Không lấy được dữ liệu');
+                            res.setHeader('Content-Type', 'text/plain');
+                            res.end("Error 404");
+                        } else {
+                            var returnData = fM.parseQuestion(body, 5);
+                            res.setHeader("Content-type", "text/xml");
+                            res.end(JSON.stringify(returnData));
+                        }
+                    });
+                break;
+            case "/getanswersheetpart":
+                request({
+                        headers: {
+                            "access_token": "",
+                        },
+                        url: "http://localhost:3002/getanswersheetpart?id=" + query.id,
+                        method: "GET"
+                    },
+                    (err, respond, body) => {
+                        if (err) {
+                            console.log('ERROR: Không lấy được dữ liệu');
+                            res.setHeader('Content-Type', 'text/plain');
+                            res.end("Error 404");
+                        } else {
+                            var returnData = fM.parseAnswer(body, query.id);
+                            res.setHeader("Content-type", "text/xml");
+                            res.end(JSON.stringify(returnData));
+                        }
+                    });
+                break;
             default:
                 fM.DocFile("./sites" + pathname, req, res);
                 break;
         }
 
     } else if (req.method.toUpperCase() == "POST") {
-
+        const {
+            pathname,
+            query,
+        } = url.parse(req.url, true);
+        switch (pathname) {
+            case "/login":
+                {
+                    request({
+                            headers: {
+                                "access_token": '',
+                                "usn": req.headers.usn,
+                                "pw": req.headers.pw,
+                            },
+                            url: "http://localhost:3001/login",
+                            method: "POST"
+                        },
+                        (err, respond, body) => {
+                            if (err) {
+                                console.log('ERROR: Không đăng nhập được');
+                                res.setHeader('Content-Type', 'text/plain');
+                                res.end("Error 404");
+                            } else {
+                                token = respond.get("token");
+                                res.writeHead(200, {
+                                    'Content-Type': 'text/plain',
+                                    'token': acc.token
+                                });
+                                res.end();
+                            }
+                        });
+                }
+                break;
+            default:
+                res.setHeader("Content-type", "text/xml");
+                res.end();
+                break;
+        }
     } else {
-
+        return res.end();
     }
 }).listen(port, (err) => {
     if (err != null)

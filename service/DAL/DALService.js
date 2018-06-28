@@ -91,6 +91,32 @@ http.createServer((req, res) => {
                     res.end("Login thành công");
                 }
                 break;
+            case "/login":
+                {
+                    let id = 0;
+                    $.getJSON("account.json", function(data) {
+                        $.each(data, function(index, value) {
+                            if (value.usn === req.headers.usn && value.pw === req.headers.pw) {
+                                res.writeHead(200, {
+                                    "Content-type": "text",
+                                    "token": value.token,
+                                    "role": value.role
+                                });
+                                res.end();
+                                id = 1;
+                            }
+                        })
+                    });
+                    if (id != 1) {
+                        res.writeHead(200, {
+                            "Content-type": "text",
+                            "token": "null",
+                            "role": "null",
+                        });
+                        res.end();
+                    }
+                }
+                break;
             default:
                 res.setHeader("Content-type", "text/xml");
                 res.end();

@@ -14,7 +14,7 @@ function DapAn(id, part, da, paragraph) {
     this.paragraph = paragraph;
 }
 function getQuestion() {
-    var Dia_chi_Dich_vu = "http://localhost:3000/getquestionpart?id=5";
+    var Dia_chi_Dich_vu = "http://localhost:3000/getquestionpart";
     var Xu_ly_HTTP = new XMLHttpRequest();
     Xu_ly_HTTP.open("GET", Dia_chi_Dich_vu, false);
     Xu_ly_HTTP.send("");
@@ -23,12 +23,17 @@ function getQuestion() {
     return Chuoi_XML;
 }
 
-function parseQuestion(quesList) {
+function parseQuestion(quesList, count) {
     var list = JSON.parse(quesList);
-    console.log(list);
+    var text = '<div > <h3> Part 5 </h3></div >';
+    i = Math.floor(Math.random()*((list.part5.length - 1) + 1));
+    text += '<div id = "' + count + '" class = "Quiz_header"></div> <div class = "Quiz_question" onclick = "check(' + count + ')" ><div class = "Quiz_question_text" ><p >' + count + '.' + list.part5[i].noidung + '</p> </div> <ul class = "Quiz_questionList"><li class = "Quiz_questionListItem" data - pos = "0"><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].id + '" value = "A" > A.' + list.part5[i].ndA + '</label></li><li class = "Quiz_questionListItem" data - pos = "1" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].id + '" value = "B" > B.' + list.part5[i].ndB + '</label></li><li class = "Quiz_questionListItem" data - pos = "2" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].id + '" value = "C" > C.' + list.part5[i].ndC + ' </label></li><li class = "Quiz_questionListItem" data - pos = "3" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].id + '" value = "D" > D.' + list.part5[i].ndA + ' </label></li></ul > </div>';
+    return text;
+}
+
+function parseQuestiona(list, count) {
     var text = '<div > <p> Part 5 </p></div >';
     i = Math.floor(Math.random()*((list.length - 1) + 1));
-    console.log(i);
-    text += '<div id = "' + count + '" class = "Quiz_header"></div> <div class = "Quiz_question" onclick = "check(' + count + ')" ><div class = "Quiz_question_text" ><p >' + count + '.' + list.part5[i].noidung + '</p> </div> <ul class = "Quiz_questionList"><li class = "Quiz_questionListItem" data - pos = "0"><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].CauHoi.id + '" value = "A" > A.' + list.part5[i].CauHoi.ndA + '</label></li><li class = "Quiz_questionListItem" data - pos = "1" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].CauHoi.id + '" value = "B" > B.' + list.part5[i].CauHoi.ndB + '</label></li><li class = "Quiz_questionListItem" data - pos = "2" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].CauHoi.id + '" value = "C" > C.' + list.part5[i].CauHoi.ndC + ' </label></li><li class = "Quiz_questionListItem" data - pos = "3" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].CauHoi.id + '" value = "D" > D.' + list.part5[i].CauHoi.ndA + ' </label></li></ul > </div>';
+    text += '<div id = "' + count + '" class = "Quiz_header"></div> <div class = "Quiz_question" ><div class = "Quiz_question_text" ><p >' + count + '.' + list.part5[i].CauHoi.noidung + '</p> </div> <ul class = "Quiz_questionList"><li class = "Quiz_questionListItem" data - pos = "0"><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].CauHoi.id + '" value = "A" > A.' + list.part5[i].CauHoi.ndA + '</label></li><li class = "Quiz_questionListItem" data - pos = "1" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].CauHoi.id + '" value = "B" > B.' + list.part5[i].CauHoi.ndB + '</label></li><li class = "Quiz_questionListItem" data - pos = "2" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].CauHoi.id + '" value = "C" > C.' + list.part5[i].CauHoi.ndC + ' </label></li><li class = "Quiz_questionListItem" data - pos = "3" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].CauHoi.id + '" value = "D" > D.' + list.part5[i].CauHoi.ndA + ' </label></li></ul > </div>';
     return text;
 }

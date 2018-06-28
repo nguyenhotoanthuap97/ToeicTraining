@@ -181,6 +181,10 @@ function readData() {
     return Danh_sach_Tivi;
 }
 
+function login() {
+    var usn = getElementById("usn")
+}
+
 function CauHoi(id, part, noidung, ndA, ndB, ndC, ndD) {
     this.id = id;
     this.noidung = noidung;

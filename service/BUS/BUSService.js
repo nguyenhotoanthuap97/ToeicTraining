@@ -15,6 +15,11 @@ const {
 
 let cache = undefined;
 
+let acc = {
+    token: "",
+    role: "",
+};
+
 // Login DAL
 bus.requestLogin((err, body) => {
     if (err) {
@@ -27,10 +32,6 @@ bus.requestLogin((err, body) => {
 //Server
 http.createServer((req, res) => {
     console.log(req.method, req.url);
-    /*res.setHeader("Access-Control-Allow-Origin", "*");
-    if (req.headers.access_token != access_token) {
-        return res.end('Từ chối truy cập!');
-    }*/
 
     if (req.method.toUpperCase() == "GET") {
         //Parse URL
@@ -325,12 +326,50 @@ http.createServer((req, res) => {
                         });
                 }
                 break;
+
             default:
                 res.setHeader("Content-type", "text/xml");
                 res.end();
                 break;
         }
     } else if (req.method.toUpperCase() == "POST") {
+        const {
+            pathname,
+            query,
+        } = url.parse(req.url, true);
+        switch (pathname) {
+
+            case "/login":
+                {
+                    request({
+                            headers: {
+                                "access_token": DAL_access_token,
+                                "usn": req.headers.usn,
+                                "pw": req.headers.pw,
+                            },
+                            url: "http://localhost:3001/login",
+                            method: "POST"
+                        },
+                        (err, respond, body) => {
+                            if (err) {
+                                console.log('ERROR: Không đăng nhập được');
+                                res.setHeader('Content-Type', 'text/plain');
+                                res.end("Error 404");
+                            } else {
+                                acc.token = respond.get("token");
+                                acc.role = respond.get("role");
+                                res.writeHead(200, {'Content-Type': 'text/plain', 'token': acc.token});
+                                res.end();
+                            }
+                        });
+                }
+                break;
+            default:
+                res.setHeader("Content-type", "text/xml");
+                res.end();
+                break;
+        }
+    } else {
         return res.end();
     }
 }).listen(port, (err) => {
