@@ -8,7 +8,7 @@ function getPart(i) {
     return Chuoi_XML;
 }
 function getAnswer(i) {
-    var Dia_chi_Dich_vu = "http://localhost:3000/getanswersheetpart?id="+ i;
+    var Dia_chi_Dich_vu = "http://localhost:3000/getanswersheetpart?id=" + i;
     var Xu_ly_HTTP = new XMLHttpRequest();
     Xu_ly_HTTP.open("GET", Dia_chi_Dich_vu, false);
     Xu_ly_HTTP.send("");

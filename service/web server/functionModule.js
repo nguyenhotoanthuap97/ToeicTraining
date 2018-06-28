@@ -77,9 +77,17 @@ class functionModule {
                     }
                 }
                 if (part == 7) {
-                    part7.push({paragraph, img, listQues});
+                    part7.push({
+                        paragraph,
+                        img,
+                        listQues
+                    });
                 } else {
-                    part6.push({paragraph,img,listQues});
+                    part6.push({
+                        paragraph,
+                        img,
+                        listQues
+                    });
                 }
             }
         }
@@ -91,7 +99,7 @@ class functionModule {
     parseQuestion(data, p) {
         var xml = new DOMParser().parseFromString(data, "text/xml");
         var list = xml.getElementsByTagName("part");
-        var part5 = [];
+        var partList = [];
         var part;
         if (p === 5) {
             for (var i = 0; i < list[0].getElementsByTagName("Question").length; i++) {
@@ -104,54 +112,50 @@ class functionModule {
                 var ndB = choice[0].getElementsByTagName("B")[0].childNodes[0].nodeValue;
                 var ndC = choice[0].getElementsByTagName("C")[0].childNodes[0].nodeValue;
                 var ndD = choice[0].getElementsByTagName("D")[0].childNodes[0].nodeValue;
-                part5.push(new CauHoi(id, part, nd, ndA, ndB, ndC, ndD));
+                partList.push(new CauHoi(id, part, nd, ndA, ndB, ndC, ndD));
             }
-            var List = {
-                part5: part5,
-            };
-            return List;
+            return partList;
         }
         if (p === 6 || p === 7) {
-            for (var pos = 2; pos < 4; pos++) {
-                for (var i = 0; i < list[pos - 1].getElementsByTagName("Question").length; i++) {
-                    part = pos + 4;
-                    var root = list[pos - 1].getElementsByTagName("Question")[i];
-                    var paragraph = root.getAttribute("paragraph");
-                    var img = root.getAttribute("image");
-                    var listQues = [];
-                    var choice = root.getElementsByTagName("Choices");
-                    for (var j = 0; j < choice.length; j++) {
-                        var id = choice[j].getAttribute("id");
-                        var ndA = choice[j].getElementsByTagName("A").nodeValue;
-                        var ndB = choice[j].getElementsByTagName("B").nodeValue;
-                        var ndC = choice[j].getElementsByTagName("C").nodeValue;
-                        var ndD = choice[j].getElementsByTagName("D").nodeValue;
-                        if (part == 7) {
-                            var nd = choice[j].getAttribute("question");
-                            listQues.push(new CauHoi(id, part, nd, ndA, ndB, ndC, ndD));
-                        } else {
-                            listQues.push(new CauHoi(id, part, "", ndA, ndB, ndC, ndD));
-                        }
-                    }
+
+            for (var i = 0; i < list[0].getElementsByTagName("Question").length; i++) {
+                part = p;
+                var root = list[0].getElementsByTagName("Question")[i];
+                var paragraph = root.getAttribute("paragraph");
+                var img = root.getAttribute("image");
+                var listQues = [];
+                var choice = root.getElementsByTagName("Choices");
+                for (var j = 0; j < choice.length; j++) {
+                    var id = choice[j].getAttribute("id");
+                    var ndA = choice[j].getElementsByTagName("A")[0].childNodes[0].nodeValue;
+                    var ndB = choice[j].getElementsByTagName("B")[0].childNodes[0].nodeValue;
+                    var ndC = choice[j].getElementsByTagName("C")[0].childNodes[0].nodeValue;
+                    var ndD = choice[j].getElementsByTagName("D")[0].childNodes[0].nodeValue;
                     if (part == 7) {
-                        part7 = {
-                            paragraph,
-                            img,
-                            listQues
-                        };
+                        var nd = choice[j].getAttribute("question");
+                        listQues.push(new CauHoi(id, part, nd, ndA, ndB, ndC, ndD));
                     } else {
-                        part6 = {
-                            paragraph,
-                            img,
-                            listQues
-                        };
+                        listQues.push(new CauHoi(id, part, "", ndA, ndB, ndC, ndD));
                     }
+                }
+                if (part == 7) {
+                    partList.push({
+                        paragraph,
+                        img,
+                        listQues
+                    });
+                } else {
+                    partList.push({
+                        paragraph,
+                        img,
+                        listQues
+                    });
                 }
             }
         }
     }
     parseAnswer(data, p) {
-        var xml= new DOMParser().parseFromString(data, "text/xml").documentElement;
+        var xml = new DOMParser().parseFromString(data, "text/xml").documentElement;
         var list = xml.getElementsByTagName("part");
         console.log(list);
         var pList = [];
@@ -161,7 +165,10 @@ class functionModule {
                 var root = list[0].getElementsByTagName("Answer")[i];
                 var id = root.getAttribute("id");
                 var ans = root.nodeValue;
-                pList.push({id, nd});
+                pList.push({
+                    id,
+                    nd
+                });
             }
         }
         if (p === 6 || p === 7) {
@@ -175,7 +182,10 @@ class functionModule {
                     var ans = choice[j].nodeValue;
                     listAns.push(id, ans);
                 }
-                pList.push({paraId, listAns});
+                pList.push({
+                    paraId,
+                    listAns
+                });
             }
         }
         return pList;
