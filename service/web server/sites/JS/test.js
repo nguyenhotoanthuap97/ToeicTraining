@@ -1,7 +1,3 @@
-var request = require("request");
-var token;
-
-
 function check(n) {
     var string = n;
     var a = document.getElementsByName(string);
@@ -19,7 +15,6 @@ function getTestBookCount() {
     Xu_ly_HTTP.open("GET", Dia_chi_Dich_vu, false);
     Xu_ly_HTTP.send("");
     var Chuoi_XML = Xu_ly_HTTP.responseText;
-
     return Chuoi_XML;
 }
 
@@ -29,7 +24,6 @@ function getTestBook(id) {
     Xu_ly_HTTP.open("GET", Dia_chi_Dich_vu, false);
     Xu_ly_HTTP.send("");
     var Chuoi_XML = Xu_ly_HTTP.responseText;
-
     return Chuoi_XML;
 }
 
@@ -60,89 +54,86 @@ function genTestBookList(n) {
     text += '</table>';
     return text;
 }
-
 /*//Xu ly the hien
 function readList(xml) {
-    var list = xml.getElementsByTagName("Part");
-    var quesList = [];
-    var part5 = [];
-    var part6 = [];
-    var part7 = [];
-    var part;
-    for (var i = 0; i < list[1].getElementsByTagName("Question").length; i++) {
-        part = 5;
-        var root = list[1].getElementsByTagName("Question")[i];
-        var id = root.getAttribute("id");
-        var nd = root.getAttribute("content");
-        var choice = root.getElementsByTagName("Choices");
-        var ndA = choice.getElementsByTagName("A").innerHTML;
-        var ndB = choice.getElementsByTagName("B").innerHTML;
-        var ndC = choice.getElementsByTagName("C").innerHTML;
-        var ndD = choice.getElementsByTagName("D").innerHTML;
-        part5.push(new CauHoi(id, part, nd, ndA, ndB, ndC, ndD, "", ""));
-    }
-
-    for (var pos = 2; pos < 4; pos++) {
-        for (var i = 0; i < list[pos].getElementsByTagName("Question").length; i++) {
-            part = pos + 4;
-            var root = list[1].getElementsByTagName("Question")[i];
-            var paragraph = root.getAttribute("paragraph");
-            var img = root.getAttribute("image");
-            var listQues = [];
-            var choice = root.getElementsByTagName("Choices");
-            for (var j = 0; j < choice.length; j++) {
-                var id = choice[j].getAttribute("id");
-                var ndA = choice[j].getElementsByTagName("A").innerHTML;
-                var ndB = choice[j].getElementsByTagName("B").innerHTML;
-                var ndC = choice[j].getElementsByTagName("C").innerHTML;
-                var ndD = choice[j].getElementsByTagName("D").innerHTML;
-                if (part == 7) {
-                    var nd = choice[j].getAttribute("question");
-                    listQues.push(new CauHoi(id, part, nd, ndA, ndB, ndC, ndD));
-                } else {
-                    listQues.push(new CauHoi(id, part, "", ndA, ndB, ndC, ndD));
-                }
-            }
-            if (part == 7) {
-                part7.push(paragraph, img, listQues);
-            } else {
-                part6.push(paragraph, img, listQues);
-            }
-        }
-    }
-    quesList.push(part5, part6, part7);
-    return quesList;
+var list = xml.getElementsByTagName("Part");
+var quesList = [];
+var part5 = [];
+var part6 = [];
+var part7 = [];
+var part;
+for (var i = 0; i < list[1].getElementsByTagName("Question").length; i++) {
+part = 5;
+var root = list[1].getElementsByTagName("Question")[i];
+var id = root.getAttribute("id");
+var nd = root.getAttribute("content");
+var choice = root.getElementsByTagName("Choices");
+var ndA = choice.getElementsByTagName("A").innerHTML;
+var ndB = choice.getElementsByTagName("B").innerHTML;
+var ndC = choice.getElementsByTagName("C").innerHTML;
+var ndD = choice.getElementsByTagName("D").innerHTML;
+part5.push(new CauHoi(id, part, nd, ndA, ndB, ndC, ndD, "", ""));
+}
+for (var pos = 2; pos < 4; pos++) {
+for (var i = 0; i < list[pos].getElementsByTagName("Question").length; i++) {
+part = pos + 4;
+var root = list[1].getElementsByTagName("Question")[i];
+var paragraph = root.getAttribute("paragraph");
+var img = root.getAttribute("image");
+var listQues = [];
+var choice = root.getElementsByTagName("Choices");
+for (var j = 0; j < choice.length; j++) {
+var id = choice[j].getAttribute("id");
+var ndA = choice[j].getElementsByTagName("A").innerHTML;
+var ndB = choice[j].getElementsByTagName("B").innerHTML;
+var ndC = choice[j].getElementsByTagName("C").innerHTML;
+var ndD = choice[j].getElementsByTagName("D").innerHTML;
+if (part == 7) {
+var nd = choice[j].getAttribute("question");
+listQues.push(new CauHoi(id, part, nd, ndA, ndB, ndC, ndD));
+} else {
+listQues.push(new CauHoi(id, part, "", ndA, ndB, ndC, ndD));
+}
+}
+if (part == 7) {
+part7.push(paragraph, img, listQues);
+} else {
+part6.push(paragraph, img, listQues);
+}
+}
+}
+quesList.push(part5, part6, part7);
+return quesList;
 }*/
-
 function parseQues(list) {
     var count = 1;
     var text = `<div class="row" style="margin-right: 30px; margin-left: 20px;">
-                    <div class="Quiz_reviewDiv" style="">
-                        <div class="Quiz_reviewQuestion">
-                            <ol style="margin-top: 0px !important">`
+<div class="Quiz_reviewDiv" style="">
+    <div class="Quiz_reviewQuestion">
+        <ol style="margin-top: 0px !important">`
     for (var i = 1; i <= 40; i++) {
         text += '<li>' + '<a href="#' + i + '">' + i + '</a></li>';
     }
     text += `           </ol>
-                            <div style="top: 5px;"></div>
-                        </div>
-                        <div class="Quiz_reviewLabel">
-                            <ol>
-                                <li>
-                                    <span class="Quiz_reviewColor" style="background-color: #6CA54C;"></span>
-                                    <span class="Quiz_reviewText">Answered</span>
-                                </li>
-                                <li>
-                                    <span class="Quiz_reviewColor" style="background-color: #FFB800;"></span>
-                                    <span class="Quiz_reviewText">Review</span>
-                                </li>
-                            </ol>
-                            <div style="clear: both;"></div>
-                        </div>
-                        <div>
-                        </div>
-                    </div>
-                </div>`;
+        <div style="top: 5px;"></div>
+    </div>
+    <div class="Quiz_reviewLabel">
+        <ol>
+            <li>
+                <span class="Quiz_reviewColor" style="background-color: #6CA54C;"></span>
+                <span class="Quiz_reviewText">Answered</span>
+            </li>
+            <li>
+                <span class="Quiz_reviewColor" style="background-color: #FFB800;"></span>
+                <span class="Quiz_reviewText">Review</span>
+            </li>
+        </ol>
+        <div style="clear: both;"></div>
+    </div>
+    <div>
+    </div>
+</div>
+</div>`;
     text += '<div > <h3> Part 5 </h3></div >';
     for (var i = 0; i < list.part5.length; i++) {
         text += '<div id = "' + count + '" class = "Quiz_header"></div> <div class = "Quiz_question" onclick = "check(' + count + ')" ><div class = "Quiz_question_text" ><p >' + count + '.' + list.part5[i].noidung + '</p> </div> <ul class = "Quiz_questionList"><li class = "Quiz_questionListItem" data - pos = "0"><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].id + '" value = "A" > A.' + list.part5[i].ndA + '</label></li><li class = "Quiz_questionListItem" data - pos = "1" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].id + '" value = "B" > B.' + list.part5[i].ndB + '</label></li><li class = "Quiz_questionListItem" data - pos = "2" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].d + '" value = "C" > C.' + list.part5[i].ndC + ' </label></li><li class = "Quiz_questionListItem" data - pos = "3" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part5[i].id + '" value = "D" > D.' + list.part5[i].ndA + ' </label></li></ul > </div>';
@@ -152,18 +143,15 @@ function parseQues(list) {
     for (var i = 0; i < list.part6.length; i++) {
         text += '<div> <h4>Bài đọc ' + list.part6[i].paragraph + '</h4></div >';
         text += '<div name="' + list.part6[i].paragraph + '"> <img src="http://localhost:3001/getimage?name=' + list.part6[i].img.substring(8, 21) + '" alt="" width="800px"></div> ';
-
         for (var j = 0; j < list.part6[i].listQues.length; j++) {
             text += '<div id = "' + count + '" class = "Quiz_header"></div> <div class = "Quiz_question" onclick = "check(' + count + ')" ><div class = "Quiz_question_text" ><p >' + count + '.' + list.part6[i].listQues[j].noidung + '</p> </div> <ul class = "Quiz_questionList"><li class = "Quiz_questionListItem" data - pos = "0"><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6[i].listQues[j].id + '" value = "A" > A.' + list.part6[i].listQues[j].ndA + '</label></li><li class = "Quiz_questionListItem" data - pos = "1" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6[i].listQues[j].id + '" value = "B" > B.' + list.part6[i].listQues[j].ndB + '</label></li><li class = "Quiz_questionListItem" data - pos = "2" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6[i].listQues[j].id + '" value = "C" > C.' + list.part6[i].listQues[j].ndC + ' </label></li><li class = "Quiz_questionListItem" data - pos = "3" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6[i].listQues[j].id + '" value = "D" > D.' + list.part6[i].listQues[j].ndD + ' </label></li></ul > </div>';
             count++;
         }
     }
-
     text += '<div> <h3> Part 7 </h3></div >';
     for (var i = 0; i < list.part7.length; i++) {
         text += '<div> <h4>Bài đọc ' + list.part7[i].paragraph + '</h4></div >';
         text += '<div name="' + list.part7[i].paragraph + '"> <img src="http://localhost:3001/getimage?name=' + list.part7[i].img.substring(8, 21) + '" alt="" width="800px"></div> ';
-
         for (var j = 0; j < list.part7[i].listQues.length; j++) {
             text += '<div id = "' + count + '" class = "Quiz_header"></div> <div class = "Quiz_question" onclick = "check(' + count + ')" ><div class = "Quiz_question_text" ><p >' + count + '.' + list.part7[i].listQues[j].noidung + '</p> </div> <ul class = "Quiz_questionList"><li class = "Quiz_questionListItem" data - pos = "0"><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7[i].listQues[j].id + '" value = "A" > A.' + list.part7[i].listQues[j].ndA + '</label></li><li class = "Quiz_questionListItem" data - pos = "1" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7[i].listQues[j].id + '" value = "B" > B.' + list.part7[i].listQues[j].ndB + '</label></li><li class = "Quiz_questionListItem" data - pos = "2" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7[i].listQues[j].id + '" value = "C" > C.' + list.part7[i].listQues[j].ndC + ' </label></li><li class = "Quiz_questionListItem" data - pos = "3" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7[i].listQues[j].id + '" value = "D" > D.' + list.part7[i].listQues[j].ndD + ' </label></li></ul > </div>';
             count++;
@@ -171,7 +159,6 @@ function parseQues(list) {
     }
     return text;
 }
-
 //Xu ly luu tru
 function readData() {
     var Dia_chi_Dich_vu = "http://localhost:3000/Doc_Du_lieu";
@@ -188,10 +175,8 @@ function readData() {
 function login() {
     var usn = document.getElementById("usn").getAttribute("value");
     var pwd = document.getElementById("pwd").getAttribute("value");
-
     var token;
-
-
+    console.log(usn);
 
     if (token != 'null') {
         document.getElementById("login-group").innerHTML = "Chào mừng <br/>" + token;

@@ -362,8 +362,8 @@ http.createServer((req, res) => {
                             } else {
                                 acc.token = respond.get("token");
                                 acc.role = respond.get("role");
-                                res.writeHead(200, {'Content-Type': 'text/plain', 'token': acc.token});
-                                res.end();
+                                res.writeHead(200, {'Content-Type': 'text/plain'});
+                                res.end(token.toString());
                             }
                         });
                 }
