@@ -5,16 +5,12 @@ const fM = require('./functionModule.js');
 const url = require("url");
 var request = require("request");
 const port = 3000;
-
 http.createServer((req, res) => {
-
     if (req.method.toUpperCase() == "GET") {
-
         const {
             pathname,
             query,
         } = url.parse(req.url, true);
-
         switch (pathname) {
             case "/":
             case "/home":
@@ -40,6 +36,13 @@ http.createServer((req, res) => {
                 if (pathname === "/question")
                     req.url += ".html";
                 fM.DocFile("./sites/html/question.html", req, res);
+                break;
+            case "/XemCauHoi":
+            case "/XemCauHoi.html":
+                req.url = pathname;
+                if (pathname === "/XemCauHoi")
+                    req.url += ".html";
+                fM.DocFile("./sites/html/XemCauHoi.html", req, res);
                 break;
             case "/gettestbookcount":
                 request({
@@ -102,7 +105,6 @@ http.createServer((req, res) => {
                         }
                     });
                 break;
-
             case "/getquestionpart":
                 request({
                         headers: {
@@ -128,7 +130,7 @@ http.createServer((req, res) => {
                         headers: {
                             "access_token": "",
                         },
-                        url: "http://localhost:3002/getanswersheetpart?id=" + query.id,
+                        url: "http://localhost:3002/getanswersheettestbook?id=" + query.id,
                         method: "GET"
                     },
                     (err, respond, body) => {
@@ -159,7 +161,6 @@ http.createServer((req, res) => {
                 fM.DocFile("./sites" + pathname, req, res);
                 break;
         }
-
     } else if (req.method.toUpperCase() == "POST") {
         const {
             pathname,

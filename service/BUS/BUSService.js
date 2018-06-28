@@ -11,6 +11,8 @@ const {
     DALService,
     access_token,
     DAL_access_token,
+    Tag,
+    Attribute,
 } = require("./config.js");
 
 let cache = undefined;
@@ -186,6 +188,7 @@ http.createServer((req, res) => {
                                         }
                                         var oSerializer = new XMLSerializer();
                                         var returnData = oSerializer.serializeToString(d);
+
                                         res.setHeader("Content-type", "text/xml");
                                         res.end(returnData);
                                     } else {
@@ -199,6 +202,7 @@ http.createServer((req, res) => {
                                                 d = tbAnswer[i];
                                             }
                                         }
+                                        console.log(d);
                                         var oSerializer = new XMLSerializer();
                                         var returnData = oSerializer.serializeToString(d);
                                         res.setHeader("Content-type", "text/xml");

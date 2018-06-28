@@ -151,8 +151,9 @@ class functionModule {
         }
     }
     parseAnswer(data, p) {
-        var xml = new DOMParser().parseFromString(data, "text/xml").documentElement;
+        var xml= new DOMParser().parseFromString(data, "text/xml").documentElement;
         var list = xml.getElementsByTagName("part");
+        console.log(list);
         var pList = [];
         if (p === 5) {
             for (var i = 0; i < list[0].getElementsByTagName("Answer").length; i++) {

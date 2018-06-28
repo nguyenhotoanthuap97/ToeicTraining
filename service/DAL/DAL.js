@@ -37,7 +37,7 @@ class DAL {
         })
     }
 
-    cauHoiUpdate = (pathData, xmlDomBoDe, part, maNguoiTao, CacCauHoi) => {
+    cauHoiUpdate(pathData, xmlDomBoDe, part, maNguoiTao, CacCauHoi) {
         let ds_Cau_Hoi = CacCauHoi.map((item, index) => {
           return {
             $: {
@@ -49,13 +49,13 @@ class DAL {
             }
           }
         })
-      
+
         let boDeMoi = {
           DS_CAU_HOI: [{
             'CAU': ds_Cau_Hoi
           }]
         }
-      
+
         //tim bo de co ma tuong ung va thay
         for(let i = 0; i < xmlDomBoDe.DS_BO_DE.DE.length; i++){
           if(xmlDomBoDe.DS_BO_DE.DE[i].$.Ma_de == maDe){
@@ -63,7 +63,7 @@ class DAL {
             break;
           }
         }
-      
+
         var builder = new xml2js.Builder();
         var xmlres = builder.buildObject(xmlDomBoDe);
         fs.writeFileSync(pathData, xmlres, {
