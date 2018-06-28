@@ -190,7 +190,7 @@
 	//Biến cố khởi động
 	document.body.onload = () => {
 			   list = getQuestion();
-			   temp = parseQuestion(list);
+			   temp = parseQuestion(list, count);
 			   document.getElementById('main-content').innerHTML = temp;
 	}
 	function pre(){
@@ -207,7 +207,7 @@
 	function next(){
 		text.push(document.getElementById('main-content').innerHTML);
 		if(countD == count){
-			   temp = parseQuestion(list);
+			   temp = parseQuestion(list, count);
 			   document.getElementById('main-content').innerHTML = temp;
 			   count++;
 			   countD++;
