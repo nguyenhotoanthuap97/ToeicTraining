@@ -65,10 +65,10 @@ class functionModule {
                 var choice = root.getElementsByTagName("Choices");
                 for (var j = 0; j < choice.length; j++) {
                     var id = choice[j].getAttribute("id");
-                    var ndA = choice[j].getElementsByTagName("A").nodeValue;
-                    var ndB = choice[j].getElementsByTagName("B").nodeValue;
-                    var ndC = choice[j].getElementsByTagName("C").nodeValue;
-                    var ndD = choice[j].getElementsByTagName("D").nodeValue;
+                    var ndA = choice[j].getElementsByTagName("A")[0].childNodes[0].nodeValue;
+                    var ndB = choice[j].getElementsByTagName("B")[0].childNodes[0].nodeValue;
+                    var ndC = choice[j].getElementsByTagName("C")[0].childNodes[0].nodeValue;
+                    var ndD = choice[j].getElementsByTagName("D")[0].childNodes[0].nodeValue;
                     if (part == 7) {
                         var nd = choice[j].getAttribute("question");
                         listQues.push(new CauHoi(id, part, nd, ndA, ndB, ndC, ndD));
@@ -77,17 +77,9 @@ class functionModule {
                     }
                 }
                 if (part == 7) {
-                    part7 = {
-                        paragraph,
-                        img,
-                        listQues
-                    };
+                    part7.push({paragraph, img, listQues});
                 } else {
-                    part6 = {
-                        paragraph,
-                        img,
-                        listQues
-                    };
+                    part6.push({paragraph,img,listQues});
                 }
             }
         }
@@ -168,7 +160,7 @@ class functionModule {
                 var root = list[0].getElementsByTagName("Answer")[i];
                 var id = root.getAttribute("id");
                 var ans = root.nodeValue;
-                pList.push(id, nd);
+                pList.push({id, nd});
             }
         }
         if (p === 6 || p === 7) {
@@ -182,7 +174,7 @@ class functionModule {
                     var ans = choice[j].nodeValue;
                     listAns.push(id, ans);
                 }
-                pList.push(paraId, listAns);
+                pList.push({paraId, listAns});
             }
         }
         return pList;

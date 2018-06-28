@@ -1,7 +1,7 @@
 
 
 function check(n) {
-    var string = 'question_' + n;
+    var string = n;
     var a = document.getElementsByName(string);
     for (var i = 0; i < a.length; i++) {
         if (a[i].checked === true) {
@@ -147,23 +147,23 @@ function parseQues(list) {
         count++;
     }
     text += '<div> <h3> Part 6 </h3></div >';
-    for (var i = 0; i < list.part6.listQues.length; i++) {
-        text += '<div> <h4>Bài đọc ' + list.part6.paragraph + '</h4></div >';
-        text += '<div name="' + list.part6.paragraph + '"> <img src="http://localhost:3001/getimage?name=' + list.part6.img.substring(8, 21) + '" alt="" width="800px"></div> ';
+    for (var i = 0; i < list.part6.length; i++) {
+        text += '<div> <h4>Bài đọc ' + list.part6[i].paragraph + '</h4></div >';
+        text += '<div name="' + list.part6[i].paragraph + '"> <img src="http://localhost:3001/getimage?name=' + list.part6[i].img.substring(8, 21) + '" alt="" width="800px"></div> ';
 
-        for (var j = 0; j < list.part6.listQues.length; j++) {
-            text += '<div id = "' + count + '" class = "Quiz_header"></div> <div class = "Quiz_question" onclick = "check(' + count + ')" ><div class = "Quiz_question_text" ><p >' + count + '.' + list.part6.listQues[j].noidung + '</p> </div> <ul class = "Quiz_questionList"><li class = "Quiz_questionListItem" data - pos = "0"><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6.listQues[j].id + '" value = "A" > A.' + list.part6.listQues[j].ndA + '</label></li><li class = "Quiz_questionListItem" data - pos = "1" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6.listQues[j].id + '" value = "B" > B.' + list.part6.listQues[j].ndB + '</label></li><li class = "Quiz_questionListItem" data - pos = "2" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6.listQues[j].id + '" value = "C" > C.' + list.part6.listQues[j].ndC + ' </label></li><li class = "Quiz_questionListItem" data - pos = "3" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6.listQues[j].id + '" value = "D" > D.' + list.part6.listQues[j].ndA + ' </label></li></ul > </div>';
+        for (var j = 0; j < list.part6[i].listQues.length; j++) {
+            text += '<div id = "' + count + '" class = "Quiz_header"></div> <div class = "Quiz_question" onclick = "check(' + count + ')" ><div class = "Quiz_question_text" ><p >' + count + '.' + list.part6[i].listQues[j].noidung + '</p> </div> <ul class = "Quiz_questionList"><li class = "Quiz_questionListItem" data - pos = "0"><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6[i].listQues[j].id + '" value = "A" > A.' + list.part6[i].listQues[j].ndA + '</label></li><li class = "Quiz_questionListItem" data - pos = "1" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6[i].listQues[j].id + '" value = "B" > B.' + list.part6[i].listQues[j].ndB + '</label></li><li class = "Quiz_questionListItem" data - pos = "2" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6[i].listQues[j].id + '" value = "C" > C.' + list.part6[i].listQues[j].ndC + ' </label></li><li class = "Quiz_questionListItem" data - pos = "3" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part6[i].listQues[j].id + '" value = "D" > D.' + list.part6[i].listQues[j].ndD + ' </label></li></ul > </div>';
             count++;
         }
     }
 
     text += '<div> <h3> Part 7 </h3></div >';
-    for (var i = 0; i < list.part7.listQues.length; i++) {
-        text += '<div> <h4>Bài đọc ' + list.part7.paragraph + '</h4></div >';
-        text += '<div name="' + list.part7.paragraph + '"> <img src="http://localhost:3001/getimage?name=' + list.part7.img.substring(8, 21) + '" alt="" width="800px"></div> ';
+    for (var i = 0; i < list.part7.length; i++) {
+        text += '<div> <h4>Bài đọc ' + list.part7[i].paragraph + '</h4></div >';
+        text += '<div name="' + list.part7[i].paragraph + '"> <img src="http://localhost:3001/getimage?name=' + list.part7[i].img.substring(8, 21) + '" alt="" width="800px"></div> ';
 
-        for (var j = 0; j < list.part6.listQues.length; j++) {
-            text += '<div id = "' + count + '" class = "Quiz_header"></div> <div class = "Quiz_question" onclick = "check(' + count + ')" ><div class = "Quiz_question_text" ><p >' + count + '.' + list.part7.listQues[j].noidung + '</p> </div> <ul class = "Quiz_questionList"><li class = "Quiz_questionListItem" data - pos = "0"><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7.listQues[j].id + '" value = "A" > A.' + list.part7.listQues[j].ndA + '</label></li><li class = "Quiz_questionListItem" data - pos = "1" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7.listQues[j].id + '" value = "B" > B.' + list.part7.listQues[j].ndB + '</label></li><li class = "Quiz_questionListItem" data - pos = "2" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7.listQues[j].id + '" value = "C" > C.' + list.part7.listQues[j].ndC + ' </label></li><li class = "Quiz_questionListItem" data - pos = "3" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7.listQues[j].id + '" value = "D" > D.' + list.part7.listQues[j].ndA + ' </label></li></ul > </div>';
+        for (var j = 0; j < list.part7[i].listQues.length; j++) {
+            text += '<div id = "' + count + '" class = "Quiz_header"></div> <div class = "Quiz_question" onclick = "check(' + count + ')" ><div class = "Quiz_question_text" ><p >' + count + '.' + list.part7[i].listQues[j].noidung + '</p> </div> <ul class = "Quiz_questionList"><li class = "Quiz_questionListItem" data - pos = "0"><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7[i].listQues[j].id + '" value = "A" > A.' + list.part7[i].listQues[j].ndA + '</label></li><li class = "Quiz_questionListItem" data - pos = "1" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7[i].listQues[j].id + '" value = "B" > B.' + list.part7[i].listQues[j].ndB + '</label></li><li class = "Quiz_questionListItem" data - pos = "2" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7[i].listQues[j].id + '" value = "C" > C.' + list.part7[i].listQues[j].ndC + ' </label></li><li class = "Quiz_questionListItem" data - pos = "3" ><label><input class = "Quiz_questionInput" type = "radio" name = "' + list.part7[i].listQues[j].id + '" value = "D" > D.' + list.part7[i].listQues[j].ndD + ' </label></li></ul > </div>';
             count++;
         }
     }

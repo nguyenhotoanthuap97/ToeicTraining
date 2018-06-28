@@ -37,6 +37,42 @@ class DAL {
         })
     }
 
+    cauHoiUpdate = (pathData, xmlDomBoDe, part, maNguoiTao, CacCauHoi) => {
+        let ds_Cau_Hoi = CacCauHoi.map((item, index) => {
+          return {
+            $: {
+              'Question': CacCauHoi[index],
+              'A' : CacCauHoi[index].ndA,
+              'B' : CacCauHoi[index].ndB,
+              'C' : CacCauHoi[index].ndC,
+              'D' : CacCauHoi[index].ndD
+            }
+          }
+        })
+      
+        let boDeMoi = {
+          DS_CAU_HOI: [{
+            'CAU': ds_Cau_Hoi
+          }]
+        }
+      
+        //tim bo de co ma tuong ung va thay
+        for(let i = 0; i < xmlDomBoDe.DS_BO_DE.DE.length; i++){
+          if(xmlDomBoDe.DS_BO_DE.DE[i].$.Ma_de == maDe){
+            xmlDomBoDe.DS_BO_DE.DE[i] = boDeMoi;
+            break;
+          }
+        }
+      
+        var builder = new xml2js.Builder();
+        var xmlres = builder.buildObject(xmlDomBoDe);
+        fs.writeFileSync(pathData, xmlres, {
+          encoding: "utf-8",
+          flag: "w"
+        });
+        return [xmlDomBoDe, xmlres];
+      }
+
 }
 
 //-------------------
