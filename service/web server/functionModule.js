@@ -18,6 +18,8 @@ class functionModule {
                 '.css': 'text/css',
                 '.js': 'text/javascript',
                 '.map': 'text/css',
+                '.woff':'font/woff',
+                '.woff2':'font/woff2',
             }[req.url.substr(file_extension)];
         fs.readFile(path, (err, data) => {
             if (err) {
